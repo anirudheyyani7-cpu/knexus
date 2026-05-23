@@ -44,7 +44,7 @@ export default function VerticalPage({ params }: Props) {
     a.categories.some((c) => categoryFilter.includes(c))
   );
 
-  const templateCount = verticalAgents.length;
+  const agentCount = verticalAgents.length;
 
   return (
     <>
@@ -84,7 +84,7 @@ export default function VerticalPage({ params }: Props) {
                   )}
                 </h1>
                 <p className="text-sm text-slate-500 mb-1">
-                  {templateCount} Templates Found
+                  {agentCount} Agents Found
                 </p>
                 <p className="text-sm text-slate-600 leading-relaxed max-w-2xl">
                   {vertical.description}

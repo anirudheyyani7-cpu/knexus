@@ -14,7 +14,7 @@ export function ApplicationsSection() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-10">
           <h2 className="text-2xl font-bold text-slate-800 mb-2">
-            Browse by Pre-built Applications
+            Browse by Pre-builts
           </h2>
           <p className="text-slate-500 text-sm">
             View use cases filtered by industries and functions.

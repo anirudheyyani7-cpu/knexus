@@ -4,10 +4,10 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { AgentTemplate } from "@/data/agents";
+import { AgentData } from "@/data/agents";
 
 interface AgentCardProps {
-  agent: AgentTemplate;
+  agent: AgentData;
   index: number;
 }
 

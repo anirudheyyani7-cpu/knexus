@@ -10,14 +10,11 @@ export function IntegrationsSection() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-10">
           <h2 className="text-2xl font-bold text-slate-800 mb-2">
-            Available 3rd-party Integrations
+            Active Agents in the Ecosystem
           </h2>
-          <p className="text-slate-500 text-sm">
-            Building blocks to integrate agents into your existing systems.
-          </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {integrations.map((intg, i) => (
             <motion.div
               key={intg.id}
@@ -49,11 +46,6 @@ export function IntegrationsSection() {
           ))}
         </div>
 
-        <div className="mt-8 text-center">
-          <button className="px-6 py-2.5 text-sm font-semibold border border-brand-blue text-brand-blue rounded-lg hover:bg-blue-50 transition-colors">
-            View All
-          </button>
-        </div>
       </div>
     </section>
   );

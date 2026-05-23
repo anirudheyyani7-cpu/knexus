@@ -67,7 +67,7 @@ export function HeroSection() {
 
         <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 leading-tight mb-8 tracking-tight">
           Explore{" "}
-          <span className="text-brand-blue">agent templates</span>
+          <span className="text-brand-blue">AI agents</span>
           {" "}and{" "}
           <span className="text-brand-blue">integrations</span>
           {" "}for your business.

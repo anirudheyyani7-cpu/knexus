@@ -1,8 +1,8 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useState, useMemo } from "react";
-import { Search, ArrowRight, Sparkles, ChevronDown } from "lucide-react";
+import { useState, useMemo, useEffect, useRef } from "react";
+import { Search, ArrowRight, Sparkles, ChevronDown, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { agents, agentCategories, AgentCategory } from "@/data/agents";
 import { AgentCard } from "@/components/ui/AgentCard";
@@ -15,6 +15,8 @@ const FILTERS = {
   Autonomy: ["Supervised", "Guided", "Automated"],
 };
 
+const FALLBACK_OVERVIEW = `Explore ${agents.length} AI agents across enterprise functions. Use the filters on the left to narrow by capability area, or search for a specific use case.`;
+
 export function SearchResultsContent() {
   const searchParams = useSearchParams();
   const rawQuery = searchParams.get("q") ?? "";
@@ -22,6 +24,9 @@ export function SearchResultsContent() {
   const [query, setQuery] = useState(rawQuery);
   const [inputValue, setInputValue] = useState(rawQuery);
   const [activeFilter, setActiveFilter] = useState<AgentCategory | null>(null);
+  const [aiOverview, setAiOverview] = useState<string>(FALLBACK_OVERVIEW);
+  const [loadingOverview, setLoadingOverview] = useState(false);
+  const abortRef = useRef<AbortController | null>(null);
 
   const results = useMemo(() => {
     const q = query.toLowerCase().trim();
@@ -30,7 +35,14 @@ export function SearchResultsContent() {
           (a) =>
             a.title.toLowerCase().includes(q) ||
             a.description.toLowerCase().includes(q) ||
-            a.categories.some((c) => c.toLowerCase().includes(q))
+            a.categories.some((c) => c.toLowerCase().includes(q)) ||
+            // also match individual words so multi-word chips still find agents
+            q.split(/\s+/).some(
+              (word) =>
+                word.length > 3 &&
+                (a.title.toLowerCase().includes(word) ||
+                  a.description.toLowerCase().includes(word))
+            )
         )
       : agents;
     if (activeFilter) {
@@ -39,9 +51,37 @@ export function SearchResultsContent() {
     return filtered;
   }, [query, activeFilter]);
 
-  const aiOverview = query
-    ? `Based on your search for "${query}", the most relevant solutions involve AI agents that automate and accelerate related workflows using intelligent analysis, retrieval-augmented generation, and structured reporting. The results below cover agents that directly address ${query.toLowerCase()} scenarios — from data collection and analysis to recommendation generation and report delivery.`
-    : `Explore the full catalogue of ${agents.length} AI agents across enterprise functions. Use the filters to narrow by capability area, or search for a specific use case.`;
+  // Fetch Claude AI overview whenever query or results change
+  useEffect(() => {
+    if (!query) {
+      setAiOverview(FALLBACK_OVERVIEW);
+      return;
+    }
+    if (abortRef.current) abortRef.current.abort();
+    const ctrl = new AbortController();
+    abortRef.current = ctrl;
+
+    setLoadingOverview(true);
+    fetch("/api/search", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        query,
+        agentTitles: results.map((a) => a.title),
+      }),
+      signal: ctrl.signal,
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.overview) setAiOverview(data.overview);
+        else
+          setAiOverview(
+            `Showing ${results.length} agent${results.length !== 1 ? "s" : ""} relevant to "${query}". Refine with filters or search again to narrow further.`
+          );
+      })
+      .catch(() => {/* aborted or failed — keep existing overview */})
+      .finally(() => setLoadingOverview(false));
+  }, [query, results]);
 
   function handleSearch(e: React.FormEvent) {
     e.preventDefault();
@@ -75,7 +115,7 @@ export function SearchResultsContent() {
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            placeholder="Search agent templates…"
+            placeholder="Search agents…"
             className="flex-1 bg-transparent text-sm text-slate-700 placeholder:text-slate-400 outline-none"
           />
           <button
@@ -125,16 +165,20 @@ export function SearchResultsContent() {
           {/* AI Overview */}
           <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-card">
             <div className="flex items-center gap-2 mb-3">
-              <Sparkles className="w-4 h-4 text-brand-violet" />
+              {loadingOverview ? (
+                <Loader2 className="w-4 h-4 text-brand-violet animate-spin" />
+              ) : (
+                <Sparkles className="w-4 h-4 text-brand-violet" />
+              )}
               <span className="text-sm font-bold text-slate-800">AI Overview</span>
             </div>
             <p className="text-sm text-slate-600 leading-relaxed">{aiOverview}</p>
           </div>
 
-          {/* Templates section */}
+          {/* Agents section */}
           <div>
             <h2 className="text-base font-bold text-slate-800 mb-4">
-              Templates{" "}
+              Agents{" "}
               <span className="text-slate-400 font-normal text-sm ml-1">
                 ({results.length})
               </span>

@@ -93,22 +93,6 @@ export default function AgentDetailPage({ params }: Props) {
                   ))}
                 </div>
 
-                {/* Works With */}
-                {agent.worksWithModels && agent.worksWithModels.length > 0 && (
-                  <div className="flex flex-wrap items-center gap-2 mb-6">
-                    <span className="text-xs font-semibold text-slate-500 mr-1">Works With:</span>
-                    {agent.worksWithModels.map((model) => (
-                      <span
-                        key={model}
-                        className="inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700"
-                      >
-                        <span className="w-2 h-2 rounded-full bg-brand-blue" />
-                        {model}
-                      </span>
-                    ))}
-                  </div>
-                )}
-
                 {/* Action buttons */}
                 <div className="flex flex-wrap gap-3">
                   {isComingSoon ? (

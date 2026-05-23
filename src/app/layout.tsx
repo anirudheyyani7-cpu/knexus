@@ -11,7 +11,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "K Nexus.AI — Agentic AI Marketplace",
   description:
-    "Explore AI agent templates and integrations for your business. Purpose-built for enterprise and TMT sectors.",
+    "Explore AI agents and integrations for your business. Purpose-built for enterprise and TMT sectors.",
 };
 
 export default function RootLayout({

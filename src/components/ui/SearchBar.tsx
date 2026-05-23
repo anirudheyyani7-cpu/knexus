@@ -6,12 +6,12 @@ import { Search, ArrowRight, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const CHIPS = [
-  "Automate RFP responses",
-  "Prep for client meetings",
-  "Analyze market data",
-  "Track engagements",
-  "Review proposals",
-  "Categorize support tickets",
+  "Route support tickets",
+  "Cloud infrastructure assessment",
+  "Detect customer churn",
+  "Datacenter viability",
+  "Map customer journey",
+  "Portfolio rationalization",
 ];
 
 export function SearchBar() {

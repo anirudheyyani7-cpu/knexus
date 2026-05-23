@@ -9,6 +9,30 @@ export interface Vertical {
 
 export const verticals: Vertical[] = [
   {
+    id: "telecom",
+    title: "AI for Telecom",
+    description: "Network operations, churn prediction, BSS modernisation, and billing automation.",
+    iconName: "Radio",
+    iconColorClass: "text-cyan-500",
+    iconBgClass: "bg-cyan-50",
+  },
+  {
+    id: "media",
+    title: "AI for Media & Technology",
+    description: "Content personalisation, DevOps automation, platform benchmarking, and rights management.",
+    iconName: "Clapperboard",
+    iconColorClass: "text-pink-500",
+    iconBgClass: "bg-pink-50",
+  },
+  {
+    id: "itsm",
+    title: "AI for IT & ITSM",
+    description: "Access management, incident resolution, and endpoint remediation with zero-touch ops.",
+    iconName: "MonitorCheck",
+    iconColorClass: "text-orange-500",
+    iconBgClass: "bg-orange-50",
+  },
+  {
     id: "sales",
     title: "AI for Sales & Revenue Ops",
     description: "Automate outreach, RFP responses, and pipeline enrichment to close deals faster.",
@@ -31,29 +55,5 @@ export const verticals: Vertical[] = [
     iconName: "Users",
     iconColorClass: "text-emerald-500",
     iconBgClass: "bg-emerald-50",
-  },
-  {
-    id: "itsm",
-    title: "AI for IT & ITSM",
-    description: "Access management, incident resolution, and endpoint remediation with zero-touch ops.",
-    iconName: "MonitorCheck",
-    iconColorClass: "text-orange-500",
-    iconBgClass: "bg-orange-50",
-  },
-  {
-    id: "telecom",
-    title: "AI for Telecom",
-    description: "Network operations, churn prediction, BSS modernisation, and billing automation.",
-    iconName: "Radio",
-    iconColorClass: "text-cyan-500",
-    iconBgClass: "bg-cyan-50",
-  },
-  {
-    id: "media",
-    title: "AI for Media & Technology",
-    description: "Content personalisation, DevOps automation, platform benchmarking, and rights management.",
-    iconName: "Clapperboard",
-    iconColorClass: "text-pink-500",
-    iconBgClass: "bg-pink-50",
   },
 ];

@@ -34,7 +34,7 @@ export interface SubAgent {
   description: string;
 }
 
-export interface AgentTemplate {
+export interface AgentData {
   id: string;
   title: string;
   description: string;
@@ -51,7 +51,8 @@ export interface AgentTemplate {
   subAgents?: SubAgent[];
 }
 
-export const agents: AgentTemplate[] = [
+// Order: datacenter-lifecycle-intelligence (pinned first), then both accessLink+videoUrl, then accessLink only, then neither
+export const agents: AgentData[] = [
   {
     id: "datacenter-lifecycle-intelligence",
     title: "Datacenter Lifecycle Intelligence",

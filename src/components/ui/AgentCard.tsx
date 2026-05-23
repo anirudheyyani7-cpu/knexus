@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -13,9 +13,9 @@ interface AgentCardProps {
 
 export function AgentCard({ agent, index }: AgentCardProps) {
   const isComingSoon = agent.accessLink === null;
-
   const isExternal =
     agent.accessLink !== null && agent.accessLink.startsWith("http");
+  const router = useRouter();
 
   return (
     <motion.div
@@ -24,19 +24,17 @@ export function AgentCard({ agent, index }: AgentCardProps) {
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.06 }}
       whileHover={{ y: -4 }}
+      onClick={() => router.push(`/agents/${agent.id}`)}
       className={cn(
-        "group relative bg-white border border-slate-200 rounded-xl p-5 flex flex-col",
-        "shadow-card transition-shadow duration-300",
+        "group bg-white border border-slate-200 rounded-xl p-5 flex flex-col",
+        "shadow-card transition-shadow duration-300 cursor-pointer",
         isComingSoon
           ? "opacity-60"
-          : "cursor-pointer hover:shadow-card-hover hover:border-blue-200"
+          : "hover:shadow-card-hover hover:border-blue-200"
       )}
     >
-      {/* Clickable overlay linking to detail page */}
-      <Link href={`/agents/${agent.id}`} className="absolute inset-0 z-0 rounded-xl" aria-label={agent.title} />
-
       {/* Accuracy / Coming Soon badge */}
-      <div className="flex justify-end mb-3 relative z-10">
+      <div className="flex justify-end mb-3">
         {isComingSoon ? (
           <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-400 border border-slate-200">
             Coming Soon
@@ -49,7 +47,7 @@ export function AgentCard({ agent, index }: AgentCardProps) {
       </div>
 
       {/* Title + description */}
-      <div className="flex-1 relative z-10">
+      <div className="flex-1">
         <h3 className="text-sm font-semibold text-slate-800 mb-1.5 leading-snug">
           {agent.title}
         </h3>
@@ -59,7 +57,7 @@ export function AgentCard({ agent, index }: AgentCardProps) {
       </div>
 
       {/* Category pills */}
-      <div className="flex flex-wrap gap-1.5 mt-3 relative z-10">
+      <div className="flex flex-wrap gap-1.5 mt-3">
         {agent.categories.map((cat) => (
           <span
             key={cat}
@@ -71,7 +69,7 @@ export function AgentCard({ agent, index }: AgentCardProps) {
       </div>
 
       {/* Access Agent button — bottom right */}
-      <div className="flex justify-end mt-4 relative z-10">
+      <div className="flex justify-end mt-4">
         {isComingSoon ? (
           <span className="inline-flex items-center gap-1 text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 text-slate-400 cursor-not-allowed select-none">
             Coming Soon

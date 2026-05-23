@@ -59,7 +59,7 @@ export const agents: AgentTemplate[] = [
       "Manage the complete lifecycle of datacentre assets — from provisioning to decommission — with AI-driven capacity planning, cost forecasting, and refresh scheduling.",
     categories: ["IT & Cloud", "Finance & Risk", "Operations"],
     accuracy: 96,
-    accessLink: null,
+    accessLink: "https://datcenter.vercel.app/",
     videoUrl: null,
     integrations: [
       { name: "ServiceNow", bgColor: "bg-green-100", textColor: "text-green-700", letter: "SN" },
@@ -98,7 +98,7 @@ export const agents: AgentTemplate[] = [
       "Surface churn risk and growth opportunities by analysing customer signals across every touchpoint in real time.",
     categories: ["Customer Experience", "Strategy"],
     accuracy: 98,
-    accessLink: "/agents/leadership/login",
+    accessLink: "https://www.knexus.space/agents/leadership/login",
     videoUrl: "https://youtu.be/dmdhrNwZYFo",
     integrations: [
       { name: "Salesforce", bgColor: "bg-blue-100", textColor: "text-blue-600", letter: "SF" },
@@ -137,7 +137,7 @@ export const agents: AgentTemplate[] = [
       "Intelligently classify and route support tickets to the right team with zero manual triage.",
     categories: ["Operations", "IT & Cloud"],
     accuracy: 96,
-    accessLink: "/agents/operations/login",
+    accessLink: "https://www.knexus.space/agents/operations/login",
     videoUrl: "https://youtu.be/Q3c36D6SGeE",
     integrations: [
       { name: "ServiceNow", bgColor: "bg-green-100", textColor: "text-green-700", letter: "SN" },
@@ -331,7 +331,7 @@ export const agents: AgentTemplate[] = [
       "Monitor network and IT operations in real time, predicting incidents before they impact service.",
     categories: ["IT & Cloud", "Operations"],
     accuracy: 96,
-    accessLink: "/agents/aiops-sentry/login",
+    accessLink: "https://www.knexus.space/agents/aiops-sentry/login",
     videoUrl: null,
     integrations: [
       { name: "ServiceNow", bgColor: "bg-green-100", textColor: "text-green-700", letter: "SN" },

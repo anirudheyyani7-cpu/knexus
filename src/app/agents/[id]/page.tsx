@@ -142,17 +142,6 @@ export default function AgentDetailPage({ params }: Props) {
                 </div>
               </div>
 
-              {/* Demo video */}
-              {agent.videoUrl && (
-                <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-card">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Play className="w-4 h-4 text-brand-blue" />
-                    <h2 className="text-base font-bold text-slate-800">Watch Demo</h2>
-                  </div>
-                  <YoutubeEmbed url={agent.videoUrl} title={`${agent.title} demo`} />
-                </div>
-              )}
-
               {/* Key capabilities */}
               {agent.capabilities && agent.capabilities.length > 0 && (
                 <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-card">
@@ -169,8 +158,17 @@ export default function AgentDetailPage({ params }: Props) {
               )}
             </div>
 
-            {/* RIGHT — scope + autonomy */}
+            {/* RIGHT — video + scope + autonomy */}
             <div className="space-y-4">
+              {agent.videoUrl && (
+                <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-card">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Play className="w-4 h-4 text-brand-blue" />
+                    <h2 className="text-base font-bold text-slate-800">Watch Demo</h2>
+                  </div>
+                  <YoutubeEmbed url={agent.videoUrl} title={`${agent.title} demo`} />
+                </div>
+              )}
               {agent.scope && (
                 <ScopeCard
                   label="AGENT SCOPE"

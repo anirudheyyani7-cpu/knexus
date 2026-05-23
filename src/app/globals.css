@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-blue: #1a3a8f;
+    --brand-navy: #0f172a;
+    --brand-soft: #eaf1ff;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border-default: #e2e8f0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-slate-800 antialiased;
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .hero-gradient {
+    background:
+      radial-gradient(ellipse at 65% 0%, rgba(26, 58, 143, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 10% 85%, rgba(26, 58, 143, 0.05) 0%, transparent 50%),
+      #ffffff;
+  }
+}

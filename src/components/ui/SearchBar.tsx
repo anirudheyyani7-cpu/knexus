@@ -50,7 +50,7 @@ export function SearchBar() {
             onChange={(e) => setValue(e.target.value)}
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
-            placeholder="What do you want to automate today?"
+            placeholder="Find your agentic solution here"
             className="flex-1 bg-transparent text-sm text-slate-700 placeholder:text-slate-400 outline-none"
           />
           <button

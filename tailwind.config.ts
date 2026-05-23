@@ -15,6 +15,8 @@ const config: Config = {
           navy: "#0f172a",        // Knexus Navy — dark backgrounds, footer
           soft: "#eaf1ff",        // Knexus Blue Soft — hover surfaces, tinted backgrounds
           violet: "#8B5CF6",
+          green: "#16a34a",       // Knexus Green — AI Stack accents, highlights
+          "green-dark": "#15803d",
         },
       },
       fontFamily: {
@@ -24,11 +26,16 @@ const config: Config = {
         "float-slow": "float 6s ease-in-out infinite",
         "float-mid": "float 4.5s ease-in-out infinite",
         "float-fast": "float 3.5s ease-in-out infinite",
+        "fade-in": "fadeIn 0.35s ease-out both",
       },
       keyframes: {
         float: {
           "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-12px)" },
+        },
+        fadeIn: {
+          "0%": { opacity: "0", transform: "translateY(8px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
         },
       },
       boxShadow: {

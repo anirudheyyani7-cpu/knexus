@@ -14,18 +14,18 @@ export function Header() {
         <div className="flex items-center gap-3">
           <Link
             href="/ai-stack"
-            className="inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-semibold text-brand-green border border-brand-green/40 rounded-full bg-brand-green/5 hover:bg-brand-green/10 hover:border-brand-green/70 transition-colors"
+            className="inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-semibold text-brand-dark-blue border border-brand-dark-blue/40 rounded-full bg-brand-dark-blue/5 hover:bg-brand-dark-blue/10 hover:border-brand-dark-blue/70 transition-colors"
           >
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-green opacity-60" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-green" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-dark-blue opacity-60" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-dark-blue" />
             </span>
             AI Stack
           </Link>
 
-          <button className="px-4 py-2 text-sm font-semibold text-white bg-brand-blue rounded-lg hover:bg-brand-blue-dark transition-colors shadow-sm">
+          {/* <button className="px-4 py-2 text-sm font-semibold text-white bg-brand-blue rounded-lg hover:bg-brand-blue-dark transition-colors shadow-sm">
             Login
-          </button>
+          </button> */}
         </div>
       </div>
     </header>

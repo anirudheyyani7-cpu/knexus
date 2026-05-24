@@ -2,34 +2,40 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+import { ArrowRight } from "lucide-react";
 import { Vertical } from "@/data/verticals";
-import {
-  TrendingUp,
-  Headphones,
-  Users,
-  MonitorCheck,
-  Radio,
-  Clapperboard,
-  LucideProps,
-} from "lucide-react";
-
-const iconMap: Record<string, React.ComponentType<LucideProps>> = {
-  TrendingUp,
-  Headphones,
-  Users,
-  MonitorCheck,
-  Radio,
-  Clapperboard,
-};
 
 interface IndustryCardProps {
   vertical: Vertical;
   index: number;
 }
 
+const ACCENT_CLASSES: Record<string, { bar: string; tag: string; tagText: string }> = {
+  telecom: {
+    bar: "from-cyan-400 to-cyan-600",
+    tag: "bg-cyan-50 text-cyan-600",
+    tagText: "Telecom",
+  },
+  media: {
+    bar: "from-pink-400 to-rose-500",
+    tag: "bg-pink-50 text-pink-600",
+    tagText: "Media",
+  },
+  technology: {
+    bar: "from-violet-400 to-violet-600",
+    tag: "bg-violet-50 text-violet-600",
+    tagText: "Technology",
+  },
+};
+
+const DEFAULT_ACCENT = {
+  bar: "from-slate-400 to-slate-600",
+  tag: "bg-slate-50 text-slate-600",
+  tagText: "Enterprise",
+};
+
 export function IndustryCard({ vertical, index }: IndustryCardProps) {
-  const Icon = iconMap[vertical.iconName] ?? TrendingUp;
+  const accent = ACCENT_CLASSES[vertical.id] ?? DEFAULT_ACCENT;
 
   return (
     <motion.div
@@ -38,26 +44,36 @@ export function IndustryCard({ vertical, index }: IndustryCardProps) {
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.08 }}
       whileHover={{ y: -4 }}
+      className="h-full"
     >
       <Link
         href={`/verticals/${vertical.id}`}
-        className={cn(
-          "flex bg-white border border-slate-200 rounded-xl p-6",
-          "shadow-card transition-all duration-300 block",
-          "hover:shadow-card-hover hover:border-blue-200"
-        )}
+        className="flex flex-col bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card transition-all duration-300 hover:shadow-card-hover hover:border-slate-300 h-full"
       >
-        <div
-          className={cn(
-            "w-11 h-11 rounded-xl flex items-center justify-center mb-4 flex-shrink-0",
-            vertical.iconBgClass
-          )}
-        >
-          <Icon className={cn("w-5 h-5", vertical.iconColorClass)} />
-        </div>
-        <div className="ml-4">
-          <h3 className="text-base font-semibold text-slate-800 mb-1.5">{vertical.title}</h3>
-          <p className="text-sm text-slate-500 leading-relaxed">{vertical.description}</p>
+        {/* Gradient top bar */}
+        <div className={`h-1.5 w-full bg-gradient-to-r ${accent.bar}`} />
+
+        <div className="flex flex-col flex-1 p-6">
+          {/* Tag */}
+          <span className={`inline-block self-start text-[11px] font-semibold px-2.5 py-0.5 rounded-full mb-4 ${accent.tag}`}>
+            {accent.tagText}
+          </span>
+
+          {/* Title */}
+          <h3 className="text-lg font-bold text-slate-900 mb-3 leading-snug">
+            {vertical.title}
+          </h3>
+
+          {/* Description */}
+          <p className="text-sm text-slate-500 leading-relaxed flex-1">
+            {vertical.description}
+          </p>
+
+          {/* CTA */}
+          <div className="flex items-center gap-1.5 mt-6 text-sm font-semibold text-brand-blue group-hover:gap-2.5 transition-all">
+            <span>Explore agents</span>
+            <ArrowRight className="w-4 h-4" />
+          </div>
         </div>
       </Link>
     </motion.div>

@@ -19,7 +19,7 @@ interface Message {
 
 const WELCOME: Message = {
   role: "assistant",
-  content: "Hello! I'm your K Nexus AI assistant, powered by KPMG. What business challenge can I help you solve today?",
+  content: "Hello! What business challenge can I help you solve today?",
 };
 
 export default function ChatBot() {
@@ -123,7 +123,7 @@ export default function ChatBot() {
               />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-white font-semibold text-sm leading-tight">K Nexus AI Assistant</p>
+              <p className="text-white font-semibold text-sm leading-tight">K Nexus - AI Assistant</p>
               <p className="text-blue-200 text-xs">Powered by KPMG</p>
             </div>
             <button

@@ -10,14 +10,17 @@ export function IntegrationsSection() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-10">
           <h2 className="text-2xl font-bold text-slate-800 mb-2">
-            Active Agents in the Ecosystem
+            Active platforms in our ecosystem
           </h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {integrations.map((intg, i) => (
-            <motion.div
+            <motion.a
               key={intg.id}
+              href={intg.href}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -40,9 +43,9 @@ export function IntegrationsSection() {
               </div>
               <div className="min-w-0">
                 <p className="text-sm font-semibold text-slate-800 truncate">{intg.name}</p>
-                <p className="text-xs text-slate-500 truncate">{intg.provider}</p>
+                <p className="text-xs text-slate-400 leading-snug mt-0.5 line-clamp-2">{intg.tagline}</p>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
 

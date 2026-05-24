@@ -51,7 +51,7 @@ export interface AgentData {
   subAgents?: SubAgent[];
 }
 
-// Order: datacenter-lifecycle-intelligence (pinned first), then both accessLink+videoUrl, then accessLink only, then neither
+// Order: datacenter-lifecycle-intelligence (1st), aiops-sentry/AI Operations (2nd), portfolio-rationalization (3rd), then rest
 export const agents: AgentData[] = [
   {
     id: "datacenter-lifecycle-intelligence",
@@ -90,6 +90,85 @@ export const agents: AgentData[] = [
       { name: "Asset Discovery Agent", description: "Scans infrastructure to catalogue hardware, software, and configurations." },
       { name: "Lifecycle Forecaster", description: "Models refresh timelines and cost scenarios using historical usage data." },
       { name: "Decommission Orchestrator", description: "Coordinates safe asset retirement with compliance and security checks." },
+    ],
+  },
+  {
+    id: "aiops-sentry",
+    title: "AI Operations",
+    description:
+      "Monitor network and IT operations in real time, predicting incidents before they impact service.",
+    categories: ["IT & Cloud", "Operations"],
+    accuracy: 96,
+    accessLink: "https://www.knexus.space/agents/aiops-sentry/login",
+    videoUrl: null,
+    integrations: [
+      { name: "ServiceNow", bgColor: "bg-green-100", textColor: "text-green-700", letter: "SN" },
+      { name: "Slack", bgColor: "bg-purple-100", textColor: "text-purple-600", letter: "SL" },
+      { name: "PagerDuty", bgColor: "bg-green-100", textColor: "text-green-600", letter: "PD" },
+    ],
+    scope: {
+      level: 3,
+      type: "Process",
+      summary: "Business process orchestration",
+      detail: "Continuously analyses event streams, correlates anomalies, and orchestrates incident response workflows.",
+    },
+    autonomy: {
+      level: 3,
+      type: "Automated",
+      summary: "Fully autonomous execution",
+      detail: "Handles L1 incident triage and remediation automatically; escalates only when predefined severity thresholds are crossed.",
+    },
+    capabilities: [
+      "Anomaly detection across infrastructure metrics and logs",
+      "Root cause analysis with dependency graph mapping",
+      "Predictive incident forecasting (30-min horizon)",
+      "Automated L1 runbook execution",
+      "SLA breach early-warning notifications",
+    ],
+    worksWithModels: ["claude-sonnet-4-6"],
+    subAgents: [
+      { name: "Event Correlator", description: "Groups related alerts into incidents and suppresses noise." },
+      { name: "Root Cause Analyser", description: "Traces incidents back to contributing factors using topology data." },
+      { name: "Remediation Bot", description: "Executes approved runbooks to restore service autonomously." },
+    ],
+  },
+  {
+    id: "portfolio-rationalization",
+    title: "Portfolio Rationalization",
+    description:
+      "Score applications against business value and technical health to rationalise your technology portfolio.",
+    categories: ["Finance & Risk", "IT & Cloud", "Strategy"],
+    accuracy: 95,
+    accessLink: "https://tech-ratio-vercel.vercel.app/",
+    videoUrl: null,
+    integrations: [
+      { name: "Jira", bgColor: "bg-blue-100", textColor: "text-blue-700", letter: "JR" },
+      { name: "ServiceNow", bgColor: "bg-green-100", textColor: "text-green-700", letter: "SN" },
+    ],
+    scope: {
+      level: 3,
+      type: "Process",
+      summary: "Business process orchestration",
+      detail: "Conducts a systematic assessment of the application estate, scoring each app on value, cost, risk, and technical health.",
+    },
+    autonomy: {
+      level: 2,
+      type: "Guided",
+      summary: "User-approved execution",
+      detail: "Produces rationalisation recommendations (retire, replatform, retain); portfolio governance boards review before action.",
+    },
+    capabilities: [
+      "Application inventory and dependency mapping",
+      "Business value and technical health scoring (7 dimensions)",
+      "Rationalisation scenario modelling (retire/replatform/retain)",
+      "Cost avoidance quantification",
+      "Portfolio roadmap with sequenced retirement plan",
+    ],
+    worksWithModels: ["claude-sonnet-4-6"],
+    subAgents: [
+      { name: "Inventory Auditor", description: "Discovers and catalogues all applications, owners, and dependencies." },
+      { name: "Health Scorer", description: "Rates each application across value, cost, risk, and technical debt dimensions." },
+      { name: "Rationalization Planner", description: "Generates an optimised rationalisation roadmap with cost projections." },
     ],
   },
   {
@@ -249,44 +328,6 @@ export const agents: AgentData[] = [
     ],
   },
   {
-    id: "datacenter-viability",
-    title: "Datacenter Viability",
-    description:
-      "Assess datacentre economics and migration readiness to inform build-vs-buy decisions.",
-    categories: ["IT & Cloud", "Finance & Risk"],
-    accuracy: 94,
-    accessLink: "https://data-center-agent-ten.vercel.app/",
-    videoUrl: "https://youtu.be/vPIx-BxOovE",
-    integrations: [
-      { name: "ServiceNow", bgColor: "bg-green-100", textColor: "text-green-700", letter: "SN" },
-      { name: "Jira", bgColor: "bg-blue-100", textColor: "text-blue-700", letter: "JR" },
-    ],
-    scope: {
-      level: 2,
-      type: "Task",
-      summary: "Targeted task automation",
-      detail: "Models financial and technical scenarios for datacentre decisions using live infrastructure and cost data.",
-    },
-    autonomy: {
-      level: 2,
-      type: "Guided",
-      summary: "User-approved execution",
-      detail: "Presents scenario analysis and recommendations; final investment decisions rest with the CTO and CFO.",
-    },
-    capabilities: [
-      "TCO modelling: on-prem vs. colocation vs. cloud",
-      "Power usage effectiveness (PUE) benchmarking",
-      "Migration complexity scoring",
-      "Regulatory and compliance risk flagging",
-      "Board-ready business case generation",
-    ],
-    worksWithModels: ["claude-sonnet-4-6"],
-    subAgents: [
-      { name: "Cost Modeller", description: "Builds financial models across build, lease, and cloud scenarios." },
-      { name: "Risk Assessor", description: "Evaluates regulatory, resilience, and dependency risks per scenario." },
-    ],
-  },
-  {
     id: "strategy-navigator",
     title: "Strategy Navigator",
     description:
@@ -323,85 +364,6 @@ export const agents: AgentData[] = [
       { name: "Market Intelligence Agent", description: "Collects and synthesises competitor, market, and regulatory signals." },
       { name: "Framework Analyst", description: "Applies strategic frameworks (SWOT, Porter's, Blue Ocean) to structured inputs." },
       { name: "Narrative Writer", description: "Converts analysis outputs into board-ready strategic narratives." },
-    ],
-  },
-  {
-    id: "aiops-sentry",
-    title: "AIOps Sentry",
-    description:
-      "Monitor network and IT operations in real time, predicting incidents before they impact service.",
-    categories: ["IT & Cloud", "Operations"],
-    accuracy: 96,
-    accessLink: "https://www.knexus.space/agents/aiops-sentry/login",
-    videoUrl: null,
-    integrations: [
-      { name: "ServiceNow", bgColor: "bg-green-100", textColor: "text-green-700", letter: "SN" },
-      { name: "Slack", bgColor: "bg-purple-100", textColor: "text-purple-600", letter: "SL" },
-      { name: "PagerDuty", bgColor: "bg-green-100", textColor: "text-green-600", letter: "PD" },
-    ],
-    scope: {
-      level: 3,
-      type: "Process",
-      summary: "Business process orchestration",
-      detail: "Continuously analyses event streams, correlates anomalies, and orchestrates incident response workflows.",
-    },
-    autonomy: {
-      level: 3,
-      type: "Automated",
-      summary: "Fully autonomous execution",
-      detail: "Handles L1 incident triage and remediation automatically; escalates only when predefined severity thresholds are crossed.",
-    },
-    capabilities: [
-      "Anomaly detection across infrastructure metrics and logs",
-      "Root cause analysis with dependency graph mapping",
-      "Predictive incident forecasting (30-min horizon)",
-      "Automated L1 runbook execution",
-      "SLA breach early-warning notifications",
-    ],
-    worksWithModels: ["claude-sonnet-4-6"],
-    subAgents: [
-      { name: "Event Correlator", description: "Groups related alerts into incidents and suppresses noise." },
-      { name: "Root Cause Analyser", description: "Traces incidents back to contributing factors using topology data." },
-      { name: "Remediation Bot", description: "Executes approved runbooks to restore service autonomously." },
-    ],
-  },
-  {
-    id: "portfolio-rationalization",
-    title: "Portfolio Rationalization",
-    description:
-      "Score applications against business value and technical health to rationalise your technology portfolio.",
-    categories: ["Finance & Risk", "IT & Cloud", "Strategy"],
-    accuracy: 95,
-    accessLink: "https://tech-ratio-vercel.vercel.app/",
-    videoUrl: null,
-    integrations: [
-      { name: "Jira", bgColor: "bg-blue-100", textColor: "text-blue-700", letter: "JR" },
-      { name: "ServiceNow", bgColor: "bg-green-100", textColor: "text-green-700", letter: "SN" },
-    ],
-    scope: {
-      level: 3,
-      type: "Process",
-      summary: "Business process orchestration",
-      detail: "Conducts a systematic assessment of the application estate, scoring each app on value, cost, risk, and technical health.",
-    },
-    autonomy: {
-      level: 2,
-      type: "Guided",
-      summary: "User-approved execution",
-      detail: "Produces rationalisation recommendations (retire, replatform, retain); portfolio governance boards review before action.",
-    },
-    capabilities: [
-      "Application inventory and dependency mapping",
-      "Business value and technical health scoring (7 dimensions)",
-      "Rationalisation scenario modelling (retire/replatform/retain)",
-      "Cost avoidance quantification",
-      "Portfolio roadmap with sequenced retirement plan",
-    ],
-    worksWithModels: ["claude-sonnet-4-6"],
-    subAgents: [
-      { name: "Inventory Auditor", description: "Discovers and catalogues all applications, owners, and dependencies." },
-      { name: "Health Scorer", description: "Rates each application across value, cost, risk, and technical debt dimensions." },
-      { name: "Rationalization Planner", description: "Generates an optimised rationalisation roadmap with cost projections." },
     ],
   },
   {

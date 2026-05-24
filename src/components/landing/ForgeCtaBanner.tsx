@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Wrench, ShieldCheck, Cpu, Zap, BrainCircuit } from "lucide-react";
+import { ArrowRight, Sparkles, Wrench, ShieldCheck } from "lucide-react";
 
 const FEATURES = [
   { icon: Sparkles, label: "Template library" },
@@ -21,31 +21,6 @@ export function ForgeCtaBanner() {
           transition={{ duration: 0.45 }}
           className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-brand-blue via-[#1e4db7] to-brand-navy px-8 py-10 md:px-12"
         >
-          {/* Decorative floating icons */}
-          <div className="pointer-events-none absolute inset-0 select-none">
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute right-[18%] top-4 opacity-[0.12]"
-            >
-              <BrainCircuit className="h-20 w-20 text-white" />
-            </motion.div>
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute right-[8%] bottom-3 opacity-[0.09]"
-            >
-              <Cpu className="h-24 w-24 text-white" />
-            </motion.div>
-            <motion.div
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute right-[30%] bottom-2 opacity-[0.07]"
-            >
-              <Zap className="h-14 w-14 text-white" />
-            </motion.div>
-          </div>
-
           {/* Content */}
           <div className="relative z-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div className="max-w-xl">

@@ -65,13 +65,14 @@ export function HeroSection() {
           Agentic AI Marketplace
         </div> */}
 
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 leading-tight mb-8 tracking-tight">
-          Explore{" "}
-          <span className="text-brand-blue">AI agents</span>
-          {" "}and{" "}
-          <span className="text-brand-blue">integrations</span>
-          {" "}for your business.
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 leading-tight mb-4 tracking-tight">
+          The right agent doesn&apos;t just automate{" "}
+          <span className="text-brand-blue">— it elevates.</span>
         </h1>
+
+        <p className="text-slate-500 text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
+          Purpose-built AI that transforms how enterprises operate, decide, and grow.
+        </p>
 
         <SearchBar />
       </div>

@@ -14,12 +14,8 @@ export function Header() {
         <div className="flex items-center gap-3">
           <Link
             href="/ai-stack"
-            className="inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-semibold text-brand-dark-blue border border-brand-dark-blue/40 rounded-full bg-brand-dark-blue/5 hover:bg-brand-dark-blue/10 hover:border-brand-dark-blue/70 transition-colors"
+            className="inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-semibold text-brand-blue border border-brand-blue/40 rounded-full bg-brand-blue/5 hover:bg-brand-blue/10 hover:border-brand-blue/70 transition-colors"
           >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-dark-blue opacity-60" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-dark-blue" />
-            </span>
             AI Stack
           </Link>
 

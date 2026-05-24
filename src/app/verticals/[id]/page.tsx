@@ -17,12 +17,13 @@ const iconMap: Record<string, React.ComponentType<LucideProps>> = {
 
 // Map vertical id → agent category filter
 const verticalCategoryMap: Record<string, string[]> = {
-  sales:   ["Sales", "Marketing", "Customer Experience"],
-  support: ["Customer Experience", "Operations"],
-  hr:      ["Marketing"],
-  itsm:    ["IT & Cloud", "Operations"],
-  telecom: ["Telecom", "IT & Cloud"],
-  media:   ["Strategy", "IT & Cloud", "Finance & Risk"],
+  sales:      ["Sales", "Marketing", "Customer Experience"],
+  support:    ["Customer Experience", "Operations"],
+  hr:         ["Marketing"],
+  itsm:       ["IT & Cloud", "Operations"],
+  telecom:    ["Telecom", "IT & Cloud"],
+  media:      ["Strategy", "Finance & Risk"],
+  technology: ["IT & Cloud", "Strategy", "Operations"],
 };
 
 interface Props {
@@ -84,11 +85,17 @@ export default function VerticalPage({ params }: Props) {
                   )}
                 </h1>
                 <p className="text-sm text-slate-500 mb-1">
-                  {agentCount} Agents Found
+                  {agentCount} Agents present in the domain selected
                 </p>
-                <p className="text-sm text-slate-600 leading-relaxed max-w-2xl">
-                  {vertical.description}
-                </p>
+                {vertical.longDescription ? (
+                  <p className="text-sm text-slate-600 leading-relaxed max-w-2xl mt-3">
+                    {vertical.longDescription}
+                  </p>
+                ) : (
+                  <p className="text-sm text-slate-600 leading-relaxed max-w-2xl">
+                    {vertical.description}
+                  </p>
+                )}
               </div>
             </div>
           </div>

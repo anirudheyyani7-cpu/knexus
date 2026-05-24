@@ -60,10 +60,10 @@ export function HeroSection() {
       ))}
 
       <div className="relative z-10 max-w-3xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-soft border border-blue-200 text-xs font-semibold text-brand-blue mb-6">
+        {/* <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-soft border border-blue-200 text-xs font-semibold text-brand-blue mb-6">
           <span className="w-1.5 h-1.5 rounded-full bg-brand-blue animate-pulse" />
           Agentic AI Marketplace
-        </div>
+        </div> */}
 
         <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 leading-tight mb-8 tracking-tight">
           Explore{" "}

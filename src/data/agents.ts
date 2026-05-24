@@ -1,12 +1,13 @@
 export type AgentCategory =
   | "All"
-  | "Customer Experience"
-  | "IT & Cloud"
-  | "Strategy"
-  | "Telecom"
+  | "IT"
   | "Operations"
-  | "Finance & Risk"
-  | "Marketing";
+  | "Marketing"
+  | "HR"
+  | "Customer Experience"
+  | "Sales"
+  | "Finance"
+  | "Legal";
 
 export interface IntegrationBadge {
   name: string;
@@ -58,7 +59,7 @@ export const agents: AgentData[] = [
     title: "Datacenter Lifecycle Intelligence",
     description:
       "Manage the complete lifecycle of datacentre assets — from provisioning to decommission — with AI-driven capacity planning, cost forecasting, and refresh scheduling.",
-    categories: ["IT & Cloud", "Finance & Risk", "Operations"],
+    categories: ["IT", "Finance", "Operations"],
     accuracy: 96,
     accessLink: "https://datcenter.vercel.app/",
     videoUrl: null,
@@ -97,7 +98,7 @@ export const agents: AgentData[] = [
     title: "AI Operations",
     description:
       "Monitor network and IT operations in real time, predicting incidents before they impact service.",
-    categories: ["IT & Cloud", "Operations"],
+    categories: ["IT", "Operations"],
     accuracy: 96,
     accessLink: "https://www.knexus.space/agents/aiops-sentry/login",
     videoUrl: null,
@@ -137,7 +138,7 @@ export const agents: AgentData[] = [
     title: "Portfolio Rationalization",
     description:
       "Score applications against business value and technical health to rationalise your technology portfolio.",
-    categories: ["Finance & Risk", "IT & Cloud", "Strategy"],
+    categories: ["Finance", "IT"],
     accuracy: 95,
     accessLink: "https://tech-ratio-vercel.vercel.app/",
     videoUrl: null,
@@ -176,7 +177,7 @@ export const agents: AgentData[] = [
     title: "Customer Intelligence Sentinel",
     description:
       "Surface churn risk and growth opportunities by analysing customer signals across every touchpoint in real time.",
-    categories: ["Customer Experience", "Strategy"],
+    categories: ["Customer Experience", "Sales"],
     accuracy: 98,
     accessLink: "https://www.knexus.space/agents/leadership/login",
     videoUrl: "https://youtu.be/dmdhrNwZYFo",
@@ -215,7 +216,7 @@ export const agents: AgentData[] = [
     title: "Ticket Dispatch",
     description:
       "Intelligently classify and route support tickets to the right team with zero manual triage.",
-    categories: ["Operations", "IT & Cloud"],
+    categories: ["Operations", "IT"],
     accuracy: 96,
     accessLink: "https://www.knexus.space/agents/operations/login",
     videoUrl: "https://youtu.be/Q3c36D6SGeE",
@@ -293,7 +294,7 @@ export const agents: AgentData[] = [
     title: "Cloud Infra Assessment",
     description:
       "Evaluate cloud infrastructure maturity and produce a prioritised modernisation roadmap.",
-    categories: ["IT & Cloud", "Strategy"],
+    categories: ["IT"],
     accuracy: 95,
     accessLink: "https://maturity.leankloud.com/CMMA",
     videoUrl: "https://youtu.be/bqxq8Nalnng",
@@ -332,7 +333,7 @@ export const agents: AgentData[] = [
     title: "Strategy Navigator",
     description:
       "Generate structured strategic analyses from market data to position your organisation for competitive advantage.",
-    categories: ["Strategy", "Telecom"],
+    categories: ["Operations"],
     accuracy: 95,
     accessLink: "https://aii-strategy-agent.vercel.app/",
     videoUrl: "https://youtu.be/RxqNBxLx8H4",
@@ -371,7 +372,7 @@ export const agents: AgentData[] = [
     title: "Platform Calibre",
     description:
       "Benchmark your platform architecture against industry standards and surface capability gaps.",
-    categories: ["Telecom", "IT & Cloud"],
+    categories: ["IT"],
     accuracy: 93,
     accessLink: null,
     videoUrl: null,
@@ -409,7 +410,7 @@ export const agents: AgentData[] = [
     title: "BSS Modernization",
     description:
       "Automate BSS transformation assessments and generate vendor-neutral modernisation blueprints.",
-    categories: ["Telecom", "Operations"],
+    categories: ["Operations"],
     accuracy: 92,
     accessLink: null,
     videoUrl: null,
@@ -447,7 +448,7 @@ export const agents: AgentData[] = [
     title: "Cost Optimization Ledger",
     description:
       "Identify cost-reduction levers across your technology estate with AI-driven spend analysis.",
-    categories: ["Finance & Risk", "Operations"],
+    categories: ["Finance", "Operations"],
     accuracy: 95,
     accessLink: null,
     videoUrl: null,
@@ -485,7 +486,7 @@ export const agents: AgentData[] = [
     title: "Enterprise Assessment Prism",
     description:
       "Conduct comprehensive enterprise capability assessments with structured scoring and gap analysis.",
-    categories: ["Strategy", "Customer Experience"],
+    categories: ["Customer Experience"],
     accuracy: 94,
     accessLink: null,
     videoUrl: null,
@@ -524,7 +525,7 @@ export const agents: AgentData[] = [
     title: "Compliance Compass",
     description:
       "Navigate regulatory requirements and generate compliance gap reports with automated evidence mapping.",
-    categories: ["Finance & Risk", "Operations"],
+    categories: ["Finance", "Operations"],
     accuracy: 93,
     accessLink: null,
     videoUrl: null,
@@ -563,7 +564,7 @@ export const agents: AgentData[] = [
     title: "Process Forge",
     description:
       "Redesign and automate business processes using AI-driven workflow analysis and optimisation.",
-    categories: ["Operations", "Strategy"],
+    categories: ["Operations"],
     accuracy: 92,
     accessLink: null,
     videoUrl: null,
@@ -601,11 +602,12 @@ export const agents: AgentData[] = [
 
 export const agentCategories: AgentCategory[] = [
   "All",
-  "Customer Experience",
-  "IT & Cloud",
-  "Strategy",
-  "Telecom",
+  "IT",
   "Operations",
-  "Finance & Risk",
   "Marketing",
+  "HR",
+  "Customer Experience",
+  "Sales",
+  "Finance",
+  "Legal",
 ];

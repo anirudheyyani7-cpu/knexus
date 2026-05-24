@@ -32,7 +32,7 @@ export function FunctionSection() {
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-slate-800 mb-2">Browse by Function</h2>
           <p className="text-slate-500 text-sm">
-            AI agents for teams across your business.
+            AI agents that continuously improve organizational efficiency
           </p>
         </div>
 

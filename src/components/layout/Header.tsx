@@ -1,11 +1,19 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Logo — text only, no icon */}
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center gap-2.5">
+          <Image
+            src="https://upload.wikimedia.org/wikipedia/commons/d/db/KPMG_blue_logo.svg"
+            alt="KPMG"
+            width={64}
+            height={24}
+            className="h-6 w-auto"
+            unoptimized
+          />
           <span className="text-xl font-extrabold text-slate-900 tracking-tight">
             K-Nexus<span className="text-brand-blue">.AI</span>
           </span>

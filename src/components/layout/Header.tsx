@@ -21,6 +21,12 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <Link
+            href="/tmt-ontology"
+            className="inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-semibold rounded-full border transition-colors tmt-pill"
+          >
+            TMT Ontology
+          </Link>
+          <Link
             href="/ai-stack"
             className="inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-semibold text-brand-blue border border-brand-blue/40 rounded-full bg-brand-blue/5 hover:bg-brand-blue/10 hover:border-brand-blue/70 transition-colors"
           >

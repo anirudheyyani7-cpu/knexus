@@ -23,6 +23,16 @@
 }
 
 @layer components {
+  .tmt-pill {
+    color: #7c3aed;
+    border-color: rgba(124, 58, 237, 0.4);
+    background-color: rgba(124, 58, 237, 0.05);
+  }
+  .tmt-pill:hover {
+    background-color: rgba(124, 58, 237, 0.1);
+    border-color: rgba(124, 58, 237, 0.7);
+  }
+
   .hero-gradient {
     background:
       radial-gradient(ellipse at 65% 0%, rgba(26, 58, 143, 0.08) 0%, transparent 60%),

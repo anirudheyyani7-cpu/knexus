@@ -9,7 +9,6 @@ import {
   CATEGORIES,
   FIXED_POSITIONS,
   OntologyNode,
-  OntologyEdge,
 } from "@/data/tmtOntology";
 import { NodeDetailPanel } from "./NodeDetailPanel";
 

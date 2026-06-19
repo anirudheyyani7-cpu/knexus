@@ -5,8 +5,8 @@ import { Suspense } from "react";
 
 function LoginForm() {
   const searchParams = useSearchParams();
-  const [email, setEmail] = useState("superuser@knexus.ai");
-  const [password, setPassword] = useState("KPMG@1234");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
 
   async function handleSubmit(e: React.FormEvent) {

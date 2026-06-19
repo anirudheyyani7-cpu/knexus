@@ -25,11 +25,13 @@ export function middleware(req: NextRequest) {
   }
 
   try {
-    const json = typeof atob === "function" ? atob(token) : Buffer.from(token, "base64").toString("utf8");
-    const user = JSON.parse(json);
+    // Use atob which is available in Edge runtime; avoid Buffer in middleware
+    const decoded = typeof atob === "function" ? atob(token) : null;
+    if (!decoded) throw new Error("invalid token");
+    const user = JSON.parse(decoded);
     if (!user || !user.email) throw new Error("no user");
     return NextResponse.next();
-  } catch (e) {
+  } catch {
     const loginUrl = new URL("/login", req.url);
     loginUrl.searchParams.set("redirect", pathname);
     return NextResponse.redirect(loginUrl);

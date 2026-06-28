@@ -598,6 +598,37 @@ export const agents: AgentData[] = [
       { name: "Automation Scorer", description: "Ranks automation opportunities by ROI, effort, and feasibility." },
     ],
   },
+  {
+    id: "enterprise-architecture-agent",
+    title: "Enterprise Architecture Agent",
+    description:
+      "Analyse and optimise your enterprise architecture by mapping capabilities, identifying redundancies, and generating actionable modernisation roadmaps.",
+    categories: ["IT", "Operations"],
+    accuracy: 94,
+    accessLink: "https://ea-ai-agent.vercel.app/",
+    videoUrl: null,
+    integrations: [],
+    scope: {
+      level: 3,
+      type: "Process",
+      summary: "Enterprise-wide architecture orchestration",
+      detail: "Maps and analyses technology capabilities across the enterprise to surface redundancies and modernisation opportunities.",
+    },
+    autonomy: {
+      level: 2,
+      type: "Guided",
+      summary: "User-approved recommendations",
+      detail: "Surfaces architecture insights and roadmap options for stakeholder review before action.",
+    },
+    capabilities: [
+      "Capability mapping across business and IT domains",
+      "Technology redundancy detection",
+      "Modernisation roadmap generation",
+      "Architecture gap analysis",
+    ],
+    worksWithModels: ["claude-sonnet-4-6"],
+    subAgents: [],
+  },
 ];
 
 export const agentCategories: AgentCategory[] = [

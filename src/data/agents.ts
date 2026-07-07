@@ -591,6 +591,45 @@ export const agents: AgentData[] = [
     ],
   },
   {
+    id: "dcf-agent",
+    title: "DCF Agent",
+    description:
+      "A DCF model estimates a company's intrinsic value by forecasting its future cash flows and discounting them to present value.",
+    categories: ["Finance"],
+    accuracy: 94,
+    accessLink: null,
+    videoUrl: null,
+    integrations: [
+      { name: "SAP", bgColor: "bg-blue-100", textColor: "text-blue-700", letter: "SAP" },
+      { name: "Workday", bgColor: "bg-orange-100", textColor: "text-orange-600", letter: "WD" },
+    ],
+    scope: {
+      level: 3,
+      type: "Process",
+      summary: "Business process orchestration",
+      detail: "Builds forecast models from historical financials and market assumptions to produce a fully reasoned intrinsic valuation.",
+    },
+    autonomy: {
+      level: 2,
+      type: "Guided",
+      summary: "User-approved execution",
+      detail: "Generates valuation outputs and sensitivity scenarios; finance teams review assumptions before the model is finalised.",
+    },
+    capabilities: [
+      "Automated free cash flow forecasting from historical financials",
+      "WACC and discount rate calculation",
+      "Terminal value modelling (perpetuity growth and exit multiple)",
+      "Sensitivity and scenario analysis",
+      "Valuation summary report generation",
+    ],
+    worksWithModels: ["claude-sonnet-4-6"],
+    subAgents: [
+      { name: "Forecast Builder", description: "Projects future revenue, margins, and cash flows from historical trends." },
+      { name: "Discount Rate Calculator", description: "Derives WACC and risk-adjusted discount rates from market data." },
+      { name: "Valuation Synthesiser", description: "Combines forecasts and discount rates into a final intrinsic value estimate." },
+    ],
+  },
+  {
     id: "process-forge",
     title: "Process Forge",
     description:

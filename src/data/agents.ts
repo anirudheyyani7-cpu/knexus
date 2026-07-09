@@ -140,7 +140,7 @@ export const agents: AgentData[] = [
       "Score applications against business value and technical health to rationalise your technology portfolio.",
     categories: ["Finance", "IT"],
     accuracy: 95,
-    accessLink: "https://tech-ratio-vercel.vercel.app/",
+    accessLink: "https://portfoliorationalization.vercel.app/",
     videoUrl: null,
     integrations: [
       { name: "Jira", bgColor: "bg-blue-100", textColor: "text-blue-700", letter: "JR" },

@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { ArrowRight, Lock } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AgentData } from "@/data/agents";
 import { useIsRestricted } from "@/components/providers/SessionProvider";
@@ -83,7 +83,6 @@ export function AgentCard({ agent, index }: AgentCardProps) {
             className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 text-slate-400 cursor-not-allowed select-none"
           >
             Access Agent
-            <Lock className="w-3 h-3" />
           </span>
         ) : (
           <a

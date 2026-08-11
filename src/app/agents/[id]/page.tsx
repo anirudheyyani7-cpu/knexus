@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { ArrowRight, CheckCircle2, Play, ExternalLink, Lock } from "lucide-react";
+import { ArrowRight, CheckCircle2, Play, ExternalLink } from "lucide-react";
 import { agents } from "@/data/agents";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -113,7 +113,6 @@ export default async function AgentDetailPage({ params }: Props) {
                       className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-slate-100 text-slate-400 text-sm font-semibold cursor-not-allowed"
                     >
                       Access Agent
-                      <Lock className="w-3.5 h-3.5" />
                     </button>
                   ) : (
                     <a

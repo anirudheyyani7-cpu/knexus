@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import ChatBot from "@/components/ui/ChatBot";
 import { getSessionUser } from "@/lib/auth";
+import { SessionProvider } from "@/components/providers/SessionProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,8 +28,10 @@ export default async function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="antialiased">
-        {children}
-        {canUseAssistant && <ChatBot />}
+        <SessionProvider role={user?.role ?? null}>
+          {children}
+          {canUseAssistant && <ChatBot />}
+        </SessionProvider>
       </body>
     </html>
   );

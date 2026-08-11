@@ -2,9 +2,10 @@
 
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Lock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AgentData } from "@/data/agents";
+import { useIsRestricted } from "@/components/providers/SessionProvider";
 
 interface AgentCardProps {
   agent: AgentData;
@@ -15,6 +16,7 @@ export function AgentCard({ agent, index }: AgentCardProps) {
   const isComingSoon = agent.accessLink === null;
   const isExternal =
     agent.accessLink !== null && agent.accessLink.startsWith("http");
+  const isRestricted = useIsRestricted();
   const router = useRouter();
 
   return (
@@ -73,6 +75,15 @@ export function AgentCard({ agent, index }: AgentCardProps) {
         {isComingSoon ? (
           <span className="inline-flex items-center gap-1 text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 text-slate-400 cursor-not-allowed select-none">
             Coming Soon
+          </span>
+        ) : isRestricted ? (
+          <span
+            title="Not available for this account"
+            onClick={(e) => e.stopPropagation()}
+            className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 text-slate-400 cursor-not-allowed select-none"
+          >
+            Access Agent
+            <Lock className="w-3 h-3" />
           </span>
         ) : (
           <a

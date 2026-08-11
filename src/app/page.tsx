@@ -6,16 +6,31 @@ import { FunctionSection } from "@/components/landing/FunctionSection";
 import { ForgeCtaBanner } from "@/components/landing/ForgeCtaBanner";
 import { IntegrationsSection } from "@/components/landing/IntegrationsSection";
 import { CtaSection } from "@/components/landing/CtaSection";
+import { getSessionUser } from "@/lib/auth";
 
-export default function HomePage() {
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams?: { denied?: string };
+}) {
+  const user = await getSessionUser();
+  const isRestricted = user?.role === "restricted";
+
   return (
     <>
       <Header />
       <main>
+        {searchParams?.denied === "forge" && (
+          <div className="mx-auto max-w-7xl px-6 pt-4">
+            <div className="rounded-lg border border-amber-300 bg-amber-50 px-4 py-3 text-sm font-medium text-amber-800">
+              Agent Forge isn&apos;t available on this account.
+            </div>
+          </div>
+        )}
         <HeroSection />
         <ApplicationsSection />
         <FunctionSection />
-        <ForgeCtaBanner />
+        {!isRestricted && <ForgeCtaBanner />}
         <IntegrationsSection />
         <CtaSection />
       </main>

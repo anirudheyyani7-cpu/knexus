@@ -1,16 +1,22 @@
 import { NextResponse } from "next/server";
-import { COOKIE_NAME, encodeUser } from "@/lib/auth";
+import { COOKIE_NAME, encodeUser, type Role } from "@/lib/auth";
+
+// Simple credential check for the demo — no external auth provider.
+const ACCOUNTS: Record<string, { password: string; name: string; role: Role }> = {
+  "superuser@knexus.ai": { password: "KPMG@1234", name: "Superuser", role: "admin" },
+  "platformuser@knexus.ai": { password: "knexus123", name: "Platform User", role: "restricted" },
+};
 
 export async function POST(req: Request) {
   const body = await req.json();
   const { email, password } = body ?? {};
 
-  // Simple credential check for the demo
-  if (email !== "superuser@knexus.ai" || password !== "KPMG@1234") {
+  const account = ACCOUNTS[email];
+  if (!account || account.password !== password) {
     return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
   }
 
-  const user = { email, name: "Superuser" };
+  const user = { email, name: account.name, role: account.role };
   const token = encodeUser(user);
 
   const res = NextResponse.json({ ok: true, user });

@@ -21,51 +21,55 @@ Description: Surface churn risk and growth opportunities by analysing customer s
 ID: ticket-dispatch | Categories: Operations, IT & Cloud | Accuracy: 96% | Live: true
 Description: Intelligently classify and route support tickets to the right team with zero manual triage.
 
-### 4. Customer Journey Pulse
-ID: customer-journey-pulse | Categories: Customer Experience, Marketing | Accuracy: 97% | Live: true
-Description: Map and monitor end-to-end customer journeys to identify friction points and experience gaps.
+### 4. Next Best Action Agent
+ID: next-best-action-agent | Categories: Customer Experience, Sales | Accuracy: 95% | Live: true
+Description: Recommend the single best next action for each customer in real time by blending intent signals, journey stage, and business rules.
 
-### 5. Cloud Infra Assessment
+### 5. Demand Planning Agent
+ID: demand-planning-agent | Categories: Operations, Finance | Accuracy: 95% | Live: true
+Description: Forecast demand and align supply plans across products and regions using AI-driven trend and seasonality analysis.
+
+### 6. Cloud Infra Assessment
 ID: cloud-infra-assessment | Categories: IT & Cloud, Strategy | Accuracy: 95% | Live: true
 Description: Evaluate cloud infrastructure maturity and produce a prioritised modernisation roadmap.
 
-### 6. Datacenter Viability
+### 7. Datacenter Viability
 ID: datacenter-viability | Categories: IT & Cloud, Finance & Risk | Accuracy: 94% | Live: true
 Description: Assess datacentre economics and migration readiness to inform build-vs-buy decisions.
 
-### 7. Strategy Navigator
+### 8. Strategy Navigator
 ID: strategy-navigator | Categories: Strategy, Telecom | Accuracy: 95% | Live: true
 Description: Generate structured strategic analyses from market data to position your organisation for competitive advantage.
 
-### 8. AIOps Sentry
+### 9. AIOps Sentry
 ID: aiops-sentry | Categories: IT & Cloud, Operations | Accuracy: 96% | Live: true
 Description: Monitor network and IT operations in real time, predicting incidents before they impact service.
 
-### 9. Portfolio Rationalization
+### 10. Portfolio Rationalization
 ID: portfolio-rationalization | Categories: Finance & Risk, IT & Cloud, Strategy | Accuracy: 95% | Live: true
 Description: Score applications against business value and technical health to rationalise your technology portfolio.
 
-### 10. Platform Calibre
+### 11. Platform Calibre
 ID: platform-calibre | Categories: Telecom, IT & Cloud | Accuracy: 93% | Live: false
 Description: Benchmark your platform architecture against industry standards and surface capability gaps.
 
-### 11. BSS Modernization
+### 12. BSS Modernization
 ID: bss-modernization | Categories: Telecom, Operations | Accuracy: 92% | Live: false
 Description: Automate BSS transformation assessments and generate vendor-neutral modernisation blueprints.
 
-### 12. Cost Optimization Ledger
+### 13. Cost Optimization Ledger
 ID: cost-optimization-ledger | Categories: Finance & Risk, Operations | Accuracy: 95% | Live: false
 Description: Identify cost-reduction levers across your technology estate with AI-driven spend analysis.
 
-### 13. Enterprise Assessment Prism
+### 14. Enterprise Assessment Prism
 ID: enterprise-assessment-prism | Categories: Strategy, Customer Experience | Accuracy: 94% | Live: false
 Description: Conduct comprehensive enterprise capability assessments with structured scoring and gap analysis.
 
-### 14. Compliance Compass
+### 15. Compliance Compass
 ID: compliance-compass | Categories: Finance & Risk, Operations | Accuracy: 93% | Live: false
 Description: Navigate regulatory requirements and generate compliance gap reports with automated evidence mapping.
 
-### 15. Process Forge
+### 16. Process Forge
 ID: process-forge | Categories: Operations, Strategy | Accuracy: 92% | Live: false
 Description: Redesign and automate business processes using AI-driven workflow analysis and optimisation.
 

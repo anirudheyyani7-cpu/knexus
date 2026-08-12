@@ -4,6 +4,7 @@ import { COOKIE_NAME, encodeUser, type Role } from "@/lib/auth";
 // Simple credential check for the demo — no external auth provider.
 const ACCOUNTS: Record<string, { password: string; name: string; role: Role }> = {
   "superuser@knexus.ai": { password: "KPMG@1234", name: "Superuser", role: "admin" },
+  "puru@knexus.ai": { password: "KPMG1234", name: "Puru", role: "admin" },
   "platformuser@knexus.ai": { password: "knexus123", name: "Platform User", role: "restricted" },
 };
 

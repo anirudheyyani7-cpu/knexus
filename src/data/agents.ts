@@ -327,7 +327,7 @@ export const agents: AgentData[] = [
       "Map and monitor end-to-end customer journeys to identify friction points and experience gaps.",
     categories: ["Customer Experience", "Marketing"],
     accuracy: 97,
-    accessLink: "/agents/customer/login",
+    accessLink: "https://www.knexus.space/agents/customer/login",
     videoUrl: "https://youtu.be/TlzbXRJwgLE",
     integrations: [
       { name: "HubSpot", bgColor: "bg-orange-100", textColor: "text-orange-600", letter: "H" },

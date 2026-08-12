@@ -100,7 +100,7 @@ export const agents: AgentData[] = [
       "Monitor network and IT operations in real time, predicting incidents before they impact service.",
     categories: ["IT", "Operations"],
     accuracy: 96,
-    accessLink: "https://www.knexus.space/agents/aiops-sentry/login",
+    accessLink: "https://www.knexus.space/agents/aiops-sentry/dashboard",
     videoUrl: null,
     integrations: [
       { name: "ServiceNow", bgColor: "bg-green-100", textColor: "text-green-700", letter: "SN" },
@@ -249,7 +249,7 @@ export const agents: AgentData[] = [
       "Surface churn risk and growth opportunities by analysing customer signals across every touchpoint in real time.",
     categories: ["Customer Experience", "Sales"],
     accuracy: 98,
-    accessLink: "https://www.knexus.space/agents/leadership/login",
+    accessLink: "https://www.knexus.space/agents/leadership",
     videoUrl: "https://youtu.be/dmdhrNwZYFo",
     integrations: [
       { name: "Salesforce", bgColor: "bg-blue-100", textColor: "text-blue-600", letter: "SF" },
@@ -288,7 +288,7 @@ export const agents: AgentData[] = [
       "Intelligently classify and route support tickets to the right team with zero manual triage.",
     categories: ["Operations", "IT"],
     accuracy: 96,
-    accessLink: "https://www.knexus.space/agents/operations/login",
+    accessLink: "https://www.knexus.space/agents/operations",
     videoUrl: "https://youtu.be/Q3c36D6SGeE",
     integrations: [
       { name: "ServiceNow", bgColor: "bg-green-100", textColor: "text-green-700", letter: "SN" },

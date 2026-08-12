@@ -37,7 +37,7 @@ export function SearchBar() {
         <div
           className={cn(
             "flex items-center gap-3 bg-white border rounded-2xl px-4 py-3",
-            "shadow-card transition-all duration-300",
+            "shadow-card transition-all duration-300 motion-reduce:transition-none",
             focused
               ? "border-brand-blue shadow-[0_0_0_3px_rgba(26,58,143,0.12)] scale-[1.01]"
               : "border-slate-200 hover:border-slate-300"
@@ -55,9 +55,13 @@ export function SearchBar() {
           />
           <button
             type="submit"
-            className="w-8 h-8 rounded-xl flex items-center justify-center bg-brand-blue text-white transition-colors hover:bg-brand-blue-dark flex-shrink-0"
+            className={cn(
+              "group w-8 h-8 rounded-xl flex items-center justify-center bg-brand-blue text-white flex-shrink-0",
+              "transition-all duration-200 motion-reduce:transition-none",
+              "hover:bg-brand-blue-dark hover:scale-105"
+            )}
           >
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 transition-transform duration-200 motion-reduce:transition-none group-hover:translate-x-0.5" />
           </button>
         </div>
       </form>
@@ -70,8 +74,8 @@ export function SearchBar() {
             className={cn(
               "flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium",
               "border border-slate-200 rounded-full bg-white text-slate-600",
-              "transition-all duration-200",
-              "hover:border-brand-blue hover:text-brand-blue hover:bg-brand-soft"
+              "transition-all duration-200 motion-reduce:transition-none",
+              "hover:border-brand-blue hover:text-brand-blue hover:bg-brand-soft hover:-translate-y-0.5 hover:shadow-sm"
             )}
           >
             <Sparkles className="w-3 h-3 text-brand-violet" />

@@ -50,6 +50,9 @@ export function HeroSection() {
           className={cn(
             "absolute w-14 h-14 rounded-2xl flex items-center justify-center",
             "shadow-md opacity-85 select-none",
+            "transition-[transform,opacity,box-shadow] duration-300 ease-out motion-reduce:transition-none",
+            "hover:scale-110 hover:opacity-100 hover:shadow-lg hover:[animation-play-state:paused]",
+            "motion-reduce:hover:scale-100",
             color,
             speed
           )}

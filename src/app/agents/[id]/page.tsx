@@ -9,6 +9,7 @@ import { YoutubeEmbed } from "@/components/ui/YoutubeEmbed";
 import { AgentCard } from "@/components/ui/AgentCard";
 import { cn } from "@/lib/utils";
 import { getSessionUser } from "@/lib/auth";
+import { agentSupportsSso } from "@/lib/sso";
 
 interface Props {
   params: { id: string };
@@ -27,6 +28,7 @@ export default async function AgentDetailPage({ params }: Props) {
 
   const isComingSoon = agent.accessLink === null;
   const isExternal = !isComingSoon && agent.accessLink!.startsWith("http");
+  const isSso = agentSupportsSso(agent.accessLink);
 
   const related = agents
     .filter(
@@ -116,9 +118,9 @@ export default async function AgentDetailPage({ params }: Props) {
                     </button>
                   ) : (
                     <a
-                      href={agent.accessLink!}
-                      target={isExternal ? "_blank" : "_self"}
-                      rel={isExternal ? "noopener noreferrer" : undefined}
+                      href={isSso ? `/api/sso/launch?agent=${agent.id}` : agent.accessLink!}
+                      target={isSso || isExternal ? "_blank" : "_self"}
+                      rel={isSso || isExternal ? "noopener noreferrer" : undefined}
                       className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-brand-blue text-white text-sm font-semibold hover:bg-brand-blue-dark transition-colors"
                     >
                       Access Agent

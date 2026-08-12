@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AgentData } from "@/data/agents";
 import { useIsRestricted } from "@/components/providers/SessionProvider";
+import { agentSupportsSso } from "@/lib/sso";
 
 interface AgentCardProps {
   agent: AgentData;
@@ -16,6 +17,7 @@ export function AgentCard({ agent, index }: AgentCardProps) {
   const isComingSoon = agent.accessLink === null;
   const isExternal =
     agent.accessLink !== null && agent.accessLink.startsWith("http");
+  const isSso = agentSupportsSso(agent.accessLink);
   const isRestricted = useIsRestricted();
   const router = useRouter();
 
@@ -86,9 +88,9 @@ export function AgentCard({ agent, index }: AgentCardProps) {
           </span>
         ) : (
           <a
-            href={agent.accessLink!}
-            target={isExternal ? "_blank" : "_self"}
-            rel={isExternal ? "noopener noreferrer" : undefined}
+            href={isSso ? `/api/sso/launch?agent=${agent.id}` : agent.accessLink!}
+            target={isSso || isExternal ? "_blank" : "_self"}
+            rel={isSso || isExternal ? "noopener noreferrer" : undefined}
             onClick={(e) => e.stopPropagation()}
             className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-brand-blue text-white hover:bg-brand-blue-dark transition-colors"
           >

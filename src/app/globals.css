@@ -33,6 +33,14 @@
     border-color: rgba(124, 58, 237, 0.7);
   }
 
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
   .hero-gradient {
     background:
       radial-gradient(ellipse at 65% 0%, rgba(26, 58, 143, 0.08) 0%, transparent 60%),

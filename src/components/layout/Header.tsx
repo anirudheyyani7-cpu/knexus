@@ -21,6 +21,12 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <Link
+            href="/solutions"
+            className="text-sm font-semibold text-slate-600 hover:text-brand-blue transition-colors mr-2"
+          >
+            Solutions
+          </Link>
+          <Link
             href="/tmt-ontology"
             className="inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-semibold rounded-full border transition-colors tmt-pill"
           >

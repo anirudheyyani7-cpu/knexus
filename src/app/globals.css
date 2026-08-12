@@ -23,16 +23,6 @@
 }
 
 @layer components {
-  .tmt-pill {
-    color: #7c3aed;
-    border-color: rgba(124, 58, 237, 0.4);
-    background-color: rgba(124, 58, 237, 0.05);
-  }
-  .tmt-pill:hover {
-    background-color: rgba(124, 58, 237, 0.1);
-    border-color: rgba(124, 58, 237, 0.7);
-  }
-
   .no-scrollbar {
     scrollbar-width: none;
     -ms-overflow-style: none;

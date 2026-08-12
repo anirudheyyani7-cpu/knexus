@@ -108,16 +108,20 @@ export default function OntologyGraph({ activeCategory = "all" }: OntologyGraphP
     return () => ro.disconnect();
   }, []);
 
-  // Pin every node to its fixed position so the graph never moves
-  const pinNode = (n: OntologyNode) => {
+  // Seed each node near its domain cluster, then let the force simulation
+  // (warmupTicks/cooldownTicks/decay below) spread things out from there —
+  // at ~600 nodes a hand-tuned fixed layout doesn't scale, so unlike the
+  // original ~45-node curated graph these are starting points, not pins
+  // (no fx/fy).
+  const seedNode = (n: OntologyNode) => {
     const pos = FIXED_POSITIONS[n.id];
-    return { ...n, x: pos?.x ?? 0, y: pos?.y ?? 0, fx: pos?.x ?? 0, fy: pos?.y ?? 0 };
+    return { ...n, x: pos?.x ?? 0, y: pos?.y ?? 0 };
   };
 
   const graphData = useMemo(() => {
     if (activeCategory === "all") {
       return {
-        nodes: TMT_NODES.map(pinNode),
+        nodes: TMT_NODES.map(seedNode),
         links: TMT_EDGES.map((e) => ({ ...e })),
       };
     }
@@ -131,7 +135,7 @@ export default function OntologyGraph({ activeCategory = "all" }: OntologyGraphP
       if (nodeIds.has(tgt)) nodeIds.add(src);
     });
     return {
-      nodes: TMT_NODES.filter((n) => nodeIds.has(n.id)).map(pinNode),
+      nodes: TMT_NODES.filter((n) => nodeIds.has(n.id)).map(seedNode),
       links: TMT_EDGES.filter((e) => {
         const src = typeof e.source === "string" ? e.source : (e.source as OntologyNode).id;
         const tgt = typeof e.target === "string" ? e.target : (e.target as OntologyNode).id;
@@ -269,13 +273,16 @@ export default function OntologyGraph({ activeCategory = "all" }: OntologyGraphP
         onNodeHover={handleNodeHover}
         onNodeClick={handleNodeClick}
         nodeLabel=""
-        enableNodeDrag={false}
+        enableNodeDrag={true}
         enableZoomInteraction
         enablePanInteraction
-        warmupTicks={0}
-        cooldownTicks={0}
-        d3AlphaDecay={1}
-        d3VelocityDecay={1}
+        // At ~600 nodes the simulation needs to actually run (unlike the
+        // original ~45-node curated graph, which was fully pre-placed and
+        // froze the sim instantly via warmup/cooldown=0 + decay=1).
+        warmupTicks={60}
+        cooldownTicks={200}
+        d3AlphaDecay={0.02}
+        d3VelocityDecay={0.35}
         linkDirectionalParticles={0}
       />
 

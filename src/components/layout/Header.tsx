@@ -18,6 +18,12 @@ export function Header() {
             Solutions
           </Link>
           <Link
+            href="/capability-map"
+            className="text-sm font-semibold text-slate-600 hover:text-brand-blue transition-colors"
+          >
+            Capability Map
+          </Link>
+          <Link
             href="/tmt-ontology"
             className="text-sm font-semibold text-slate-600 hover:text-brand-blue transition-colors"
           >

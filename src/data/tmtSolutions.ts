@@ -438,3 +438,101 @@ export const fy27Bets = [
     ],
   },
 ];
+
+// Strategic priorities driving the TMT portfolio, mapped to the pillar(s)
+// each one most directly moves. Used as the leftmost column of the
+// Capability Map, joined to challenges and solutions through shared pillars.
+export interface Priority {
+  id: string;
+  title: string;
+  pillarIds: string[];
+}
+
+export const priorities: Priority[] = [
+  {
+    id: "scaling-ai-responsibly",
+    title: "Scaling AI responsibly",
+    pillarIds: ["ai-data-monetization", "value-delivery-office"],
+  },
+  {
+    id: "modernizing-legacy-tech",
+    title: "Modernizing legacy tech",
+    pillarIds: ["infra-modernization"],
+  },
+  {
+    id: "market-dynamics-consumer-shifts",
+    title: "Market dynamics & consumer shifts",
+    pillarIds: ["cx-transformation", "business-model-reinvention"],
+  },
+  {
+    id: "transforming-operating-models",
+    title: "Transforming operating models",
+    pillarIds: ["business-model-reinvention", "value-delivery-office"],
+  },
+  {
+    id: "unlocking-new-growth-engines",
+    title: "Unlocking new growth engines",
+    pillarIds: ["ai-data-monetization", "cx-transformation"],
+  },
+];
+
+// Real, KPMG/PwC-sourced TMT challenges — keep `source` so it can render as a
+// citation. Items sourced "Derived from portfolio" are inferred from our own
+// solution text, not a published stat — keep them labeled as such.
+export interface Challenge {
+  id: string;
+  title: string;
+  source: string;
+  pillarIds: string[];
+}
+
+export const challenges: Challenge[] = [
+  {
+    id: "legacy-infra",
+    title: "Legacy infrastructure built for basic connectivity makes change slow and costly",
+    source: "KPMG 2025 Global TMT CEO Outlook",
+    pillarIds: ["infra-modernization", "business-model-reinvention"],
+  },
+  {
+    id: "process-tech-debt",
+    title: "Fragmented product catalogs, duplicate billing platforms and brittle order flows",
+    source: "PwC Telecom Outlook 2025",
+    pillarIds: ["infra-modernization", "cx-transformation"],
+  },
+  {
+    id: "data-readiness",
+    title: "Data readiness — inconsistent, siloed data across systems (59% cite as top challenge)",
+    source: "KPMG 2025 Global TMT CEO Outlook",
+    pillarIds: ["ai-data-monetization", "infra-modernization"],
+  },
+  {
+    id: "reactive-ops",
+    title: "Reactive network operations — high MTTR, limited observability, manual toil",
+    source: "Derived from portfolio (AIOps/SRE)",
+    pillarIds: ["ai-data-monetization"],
+  },
+  {
+    id: "ai-governance",
+    title: "AI compliance and legal uncertainty (43% of telecom CEOs) and ethical-AI/governance gaps",
+    source: "KPMG 2025 Global TMT CEO Outlook",
+    pillarIds: ["ai-data-monetization", "value-delivery-office"],
+  },
+  {
+    id: "talent-gap",
+    title: "AI & digital talent skills gap (45% of telecom CEOs especially concerned)",
+    source: "KPMG 2025 Global TMT CEO Outlook",
+    pillarIds: ["business-model-reinvention", "value-delivery-office"],
+  },
+  {
+    id: "cx-consistency",
+    title: "Inconsistent customer experience across fragmented digital and human touchpoints",
+    source: "Derived from portfolio (CX)",
+    pillarIds: ["cx-transformation"],
+  },
+  {
+    id: "value-proof",
+    title: "Proving measurable ROI / value realization from AI and transformation spend",
+    source: "KPMG AI Pulse (TMT) + portfolio (VRO)",
+    pillarIds: ["value-delivery-office", "ai-data-monetization"],
+  },
+];

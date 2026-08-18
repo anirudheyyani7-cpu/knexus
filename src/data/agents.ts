@@ -343,6 +343,49 @@ export const agents: AgentData[] = [
     integrations: [],
   },
   {
+    id: "kpmg-dice",
+    title: "KPMG DICE",
+    description:
+      "An AI intelligence layer on Salesforce/Agentforce that listens to every customer touchpoint — calls, chats, site visits, payments — and writes the real pipeline status back into the CRM in real time.",
+    categories: ["Sales", "Customer Experience", "Marketing"],
+    accuracy: 97,
+    accessLink: "https://l-t-sigma.vercel.app/",
+    videoUrl: null,
+    integrations: [
+      { name: "Salesforce", bgColor: "bg-blue-100", textColor: "text-blue-600", letter: "SF" },
+      { name: "WhatsApp", bgColor: "bg-green-100", textColor: "text-green-600", letter: "WA" },
+    ],
+    scope: {
+      level: 4,
+      type: "Enterprise",
+      summary: "Enterprise-wide intelligence",
+      detail:
+        "Runs AI agents across every customer touchpoint — leads, engagements, site visits, bookings, payments, and service tickets — orchestrating the full sales lifecycle on top of Salesforce/Agentforce.",
+    },
+    autonomy: {
+      level: 3,
+      type: "Automated",
+      summary: "Fully autonomous execution",
+      detail:
+        "Writes corrected lead status, intent, and Do Not Contact flags back into the CRM in real time — often before a call ends; managers review prioritised risk and exceptions in the Manager View.",
+    },
+    capabilities: [
+      "Real-time call, chat, and site-visit intelligence with live CRM write-back",
+      "Full customer-journey tracking across leads, engagements, site visits, bookings, payments, and service tickets",
+      "AI copilots for sales, payments, and service, plus persona mapping and campaign ROI analytics",
+      "Manager rollups — pipeline velocity, project portfolio, prioritised risk, and team performance",
+      "11 AI agents that validate leads, detect churn and intent, and flag revenue at risk",
+      "Evidence-backed scoring — every flag shows the exact signals behind it, not a black-box number",
+    ],
+    worksWithModels: ["claude-opus-4-7"],
+    subAgents: [
+      { name: "Lead Validation Agent", description: "Cross-checks CRM-entered leads against real touchpoint activity to catch dead or stale pipeline early." },
+      { name: "Live Call Intelligence Agent", description: "Transcribes and analyses calls in real time, updating status and Do Not Contact flags before the call ends." },
+      { name: "Churn & Intent Detector", description: "Scores customer intent and churn risk from calls, chats, and site-visit signals across the journey." },
+      { name: "Persona Mapping Agent", description: "Builds evidence-backed buyer-persona scores from cross-channel behaviour to guide sales and campaigns." },
+    ],
+  },
+  {
     id: "cloud-infra-assessment",
     title: "Cloud Infra Assessment",
     description:
@@ -649,49 +692,6 @@ export const agents: AgentData[] = [
       { name: "Process Miner", description: "Extracts and visualises as-is process flows from system event logs." },
       { name: "Optimisation Engine", description: "Identifies waste and generates to-be process designs." },
       { name: "Automation Scorer", description: "Ranks automation opportunities by ROI, effort, and feasibility." },
-    ],
-  },
-  {
-    id: "kpmg-dice",
-    title: "KPMG DICE",
-    description:
-      "An AI intelligence layer on Salesforce/Agentforce that listens to every customer touchpoint — calls, chats, site visits, payments — and writes the real pipeline status back into the CRM in real time.",
-    categories: ["Sales", "Customer Experience", "Marketing"],
-    accuracy: 97,
-    accessLink: "https://l-t-sigma.vercel.app/",
-    videoUrl: null,
-    integrations: [
-      { name: "Salesforce", bgColor: "bg-blue-100", textColor: "text-blue-600", letter: "SF" },
-      { name: "WhatsApp", bgColor: "bg-green-100", textColor: "text-green-600", letter: "WA" },
-    ],
-    scope: {
-      level: 4,
-      type: "Enterprise",
-      summary: "Enterprise-wide intelligence",
-      detail:
-        "Runs AI agents across every customer touchpoint — leads, engagements, site visits, bookings, payments, and service tickets — orchestrating the full sales lifecycle on top of Salesforce/Agentforce.",
-    },
-    autonomy: {
-      level: 3,
-      type: "Automated",
-      summary: "Fully autonomous execution",
-      detail:
-        "Writes corrected lead status, intent, and Do Not Contact flags back into the CRM in real time — often before a call ends; managers review prioritised risk and exceptions in the Manager View.",
-    },
-    capabilities: [
-      "Real-time call, chat, and site-visit intelligence with live CRM write-back",
-      "Full customer-journey tracking across leads, engagements, site visits, bookings, payments, and service tickets",
-      "AI copilots for sales, payments, and service, plus persona mapping and campaign ROI analytics",
-      "Manager rollups — pipeline velocity, project portfolio, prioritised risk, and team performance",
-      "11 AI agents that validate leads, detect churn and intent, and flag revenue at risk",
-      "Evidence-backed scoring — every flag shows the exact signals behind it, not a black-box number",
-    ],
-    worksWithModels: ["claude-opus-4-7"],
-    subAgents: [
-      { name: "Lead Validation Agent", description: "Cross-checks CRM-entered leads against real touchpoint activity to catch dead or stale pipeline early." },
-      { name: "Live Call Intelligence Agent", description: "Transcribes and analyses calls in real time, updating status and Do Not Contact flags before the call ends." },
-      { name: "Churn & Intent Detector", description: "Scores customer intent and churn risk from calls, chats, and site-visit signals across the journey." },
-      { name: "Persona Mapping Agent", description: "Builds evidence-backed buyer-persona scores from cross-channel behaviour to guide sales and campaigns." },
     ],
   },
 ];

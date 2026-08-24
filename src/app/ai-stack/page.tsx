@@ -20,6 +20,7 @@ import {
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import GovernanceModel from "@/components/GovernanceModel";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
 
 interface StackLayer {
   id: string;
@@ -131,6 +132,14 @@ export default function AIStackPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
+
+      <div className="bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <Breadcrumb
+            crumbs={[{ label: "Marketplace", href: "/" }, { label: "AI Stack" }]}
+          />
+        </div>
+      </div>
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-slate-200">

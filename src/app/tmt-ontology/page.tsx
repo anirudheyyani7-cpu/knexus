@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { CATEGORIES } from "@/data/tmtOntology";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
 
 const OntologyGraph = dynamic(
   () => import("@/components/ontology/OntologyGraph"),
@@ -27,6 +28,13 @@ export default function TMTOntologyPage() {
     <div className="flex flex-col h-screen bg-[#f5f0ea] overflow-hidden">
       {/* Page header */}
       <div className="flex-shrink-0 bg-white border-b border-slate-200 px-6 py-4">
+        {/* Breadcrumb sits inside the title bar so the graph keeps its full height */}
+        <div className="max-w-7xl mx-auto [&>nav]:mb-2">
+          <Breadcrumb
+            crumbs={[{ label: "Marketplace", href: "/" }, { label: "TMT Ontology" }]}
+          />
+        </div>
+
         <div className="max-w-7xl mx-auto flex items-start justify-between">
           <div>
             <h1 className="text-xl font-extrabold text-slate-900 tracking-tight">

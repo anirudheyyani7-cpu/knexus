@@ -1,5 +1,6 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { SolutionsHero } from "@/components/solutions/SolutionsHero";
 import { MetricsRow } from "@/components/solutions/MetricsRow";
 import { SolutionCard } from "@/components/solutions/SolutionCard";
@@ -13,6 +14,14 @@ export default function SolutionsPage() {
     <>
       <Header />
       <main className="min-h-screen bg-white">
+        <div className="bg-white border-b border-slate-200">
+          <div className="max-w-7xl mx-auto px-6 py-4">
+            <Breadcrumb
+              crumbs={[{ label: "Marketplace", href: "/" }, { label: "Solutions" }]}
+            />
+          </div>
+        </div>
+
         <SolutionsHero />
         <MetricsRow metrics={solutionMetrics} source={solutionMetricsSource} />
 

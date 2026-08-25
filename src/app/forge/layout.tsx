@@ -19,20 +19,37 @@ const STEPS = [
   { key: "preview", label: "Preview", paths: ["/forge/preview"] },
 ];
 
+// The three entry points off the Agent Forge chooser. Later wizard steps are left out
+// on purpose — jumping back to the start from there would drop the in-progress draft.
+const FORGE_SETUP_TABS = ["/forge/templates", "/forge/describe", "/forge/configure"];
+
+const backLinkClass =
+  "inline-flex items-center gap-1 text-xs font-medium text-slate-500 hover:text-slate-800 transition-colors";
+
 function ForgeStepBar() {
   const pathname = usePathname();
   const activeIdx = STEPS.findIndex((s) => s.paths.includes(pathname));
   const idx = activeIdx === -1 ? 0 : activeIdx;
+  const showBackToForge = FORGE_SETUP_TABS.includes(pathname);
 
   return (
     <div className="flex items-center justify-between gap-4 border-b border-slate-200 bg-slate-50 px-6 py-3">
-      <Link
-        href="/"
-        className="inline-flex items-center gap-1 text-xs font-medium text-slate-500 hover:text-slate-800 transition-colors"
-      >
-        <ChevronLeft className="h-3.5 w-3.5" />
-        Back to Command Center
-      </Link>
+      <div className="flex flex-1 items-center gap-3">
+        <Link href="/" className={backLinkClass}>
+          <ChevronLeft className="h-3.5 w-3.5" />
+          Back to Command Center
+        </Link>
+
+        {showBackToForge && (
+          <>
+            <span aria-hidden="true" className="h-3.5 w-px bg-slate-300" />
+            <Link href="/forge" className={backLinkClass}>
+              <ChevronLeft className="h-3.5 w-3.5" />
+              Back to Agent Forge
+            </Link>
+          </>
+        )}
+      </div>
 
       <ol className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider">
         {STEPS.map((step, i) => (
@@ -56,7 +73,9 @@ function ForgeStepBar() {
         ))}
       </ol>
 
-      <ActivityLog />
+      <div className="flex flex-1 justify-end">
+        <ActivityLog />
+      </div>
     </div>
   );
 }

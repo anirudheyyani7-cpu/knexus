@@ -5,7 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { ScopeCard } from "@/components/ui/ScopeCard";
-import { YoutubeEmbed } from "@/components/ui/YoutubeEmbed";
+import { VideoEmbed } from "@/components/ui/VideoEmbed";
 import { AgentCard } from "@/components/ui/AgentCard";
 import { getSessionUser } from "@/lib/auth";
 import { agentSupportsSso } from "@/lib/sso";
@@ -158,7 +158,7 @@ export default async function AgentDetailPage({ params }: Props) {
                     <Play className="w-4 h-4 text-brand-blue" />
                     <h2 className="text-base font-bold text-slate-800">Watch Demo</h2>
                   </div>
-                  <YoutubeEmbed url={agent.videoUrl} title={`${agent.title} demo`} />
+                  <VideoEmbed url={agent.videoUrl} title={`${agent.title} demo`} />
                 </div>
               )}
               {agent.scope && (

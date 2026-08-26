@@ -210,7 +210,7 @@ export const agents: AgentData[] = [
       "Assess legacy systems across the estate and generate a prioritised modernisation roadmap — replatform, refactor, or retire — with effort and risk scored for each path.",
     categories: ["IT", "Operations"],
     accessLink: "https://connect-insight-modernize.lovable.app/login",
-    videoUrl: null,
+    videoUrl: "/videos/legacy-tech-modernization.mp4",
     integrations: [],
     scope: {
       level: 3,
@@ -280,7 +280,7 @@ export const agents: AgentData[] = [
       "A unified observability command center for engineering teams — correlating logs, metrics, traces, and deployments into one operating picture, with anomalies triaged before they page anyone.",
     categories: ["IT", "Operations"],
     accessLink: "https://ontos-insight.lovable.app/",
-    videoUrl: null,
+    videoUrl: "/videos/engineering-observability-command-center.mp4",
     integrations: [],
     scope: {
       level: 3,
@@ -306,6 +306,41 @@ export const agents: AgentData[] = [
       { name: "Telemetry Correlator", description: "Unifies logs, metrics, and traces into a single incident timeline." },
       { name: "Anomaly Triage Agent", description: "Automatically classifies and prioritises anomalies before they reach on-call." },
       { name: "Deployment Watcher", description: "Flags deployments that correlate with new incidents or regressions." },
+    ],
+  },
+  {
+    id: "ai-spend-optimization",
+    title: "AI Spend Optimization",
+    description:
+      "Track and optimise AI and cloud spend across models, teams, and workloads — surfacing cost drivers, idle capacity, and rightsizing opportunities before the invoice lands.",
+    categories: ["Finance", "IT"],
+    accessLink: null,
+    videoUrl: "/videos/ai-spend-optimization.mp4",
+    integrations: [],
+    scope: {
+      level: 3,
+      type: "Process",
+      summary: "Business process orchestration",
+      detail: "Aggregates model, infrastructure, and licence spend across providers to attribute cost by team, workload, and use case.",
+    },
+    autonomy: {
+      level: 2,
+      type: "Guided",
+      summary: "User-approved execution",
+      detail: "Recommends rightsizing and consolidation actions; finance and platform owners approve before any change is applied.",
+    },
+    capabilities: [
+      "Unified AI and cloud spend visibility across providers",
+      "Cost attribution by team, workload, and use case",
+      "Token and inference spend tracking per model",
+      "Idle and over-provisioned capacity detection",
+      "Rightsizing and model-tier recommendations with projected savings",
+    ],
+    worksWithModels: ["claude-sonnet-4-6"],
+    subAgents: [
+      { name: "Spend Aggregator", description: "Consolidates billing and usage data across AI, cloud, and licence providers." },
+      { name: "Attribution Engine", description: "Maps spend to teams, workloads, and use cases for chargeback and showback." },
+      { name: "Savings Recommender", description: "Identifies rightsizing, model-tier, and consolidation opportunities with projected savings." },
     ],
   },
   {
@@ -444,7 +479,7 @@ export const agents: AgentData[] = [
     categories: ["Operations", "Finance"],
     accuracy: 95,
     accessLink: "https://demandai-snowy.vercel.app/",
-    videoUrl: null,
+    videoUrl: "/videos/demand-planning-agent.mp4",
     integrations: [],
   },
   {

@@ -1,0 +1,10 @@
+# Only videos actually wired to an agent are committed. Raw uploads (odd names,
+# unwired, or oversized) stay local. To ship a new one: rename it to the agent's
+# id, set `videoUrl` in src/data/agents.ts, then add a !line below.
+*
+!.gitignore
+!README.md
+!demand-planning-agent.mp4
+!engineering-observability-command-center.mp4
+!ai-spend-optimization.mp4
+!legacy-tech-modernization.mp4

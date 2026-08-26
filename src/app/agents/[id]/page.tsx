@@ -70,16 +70,18 @@ export default async function AgentDetailPage({ params }: Props) {
                       {agent.title}
                     </h1>
                   </div>
-                  <span
-                    className={cn(
-                      "text-sm font-bold px-3 py-1 rounded-full flex-shrink-0",
-                      isComingSoon
-                        ? "bg-slate-100 text-slate-400"
-                        : "bg-emerald-50 text-emerald-600 border border-emerald-200"
-                    )}
-                  >
-                    {isComingSoon ? "Coming Soon" : `${agent.accuracy}% accuracy`}
-                  </span>
+                  {(isComingSoon || agent.accuracy !== undefined) && (
+                    <span
+                      className={cn(
+                        "text-sm font-bold px-3 py-1 rounded-full flex-shrink-0",
+                        isComingSoon
+                          ? "bg-slate-100 text-slate-400"
+                          : "bg-emerald-50 text-emerald-600 border border-emerald-200"
+                      )}
+                    >
+                      {isComingSoon ? "Coming Soon" : `${agent.accuracy}% accuracy`}
+                    </span>
+                  )}
                 </div>
 
                 <p className="text-slate-600 leading-relaxed mb-6">{agent.description}</p>

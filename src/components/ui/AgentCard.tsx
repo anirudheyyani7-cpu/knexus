@@ -38,17 +38,19 @@ export function AgentCard({ agent, index }: AgentCardProps) {
       )}
     >
       {/* Accuracy / Coming Soon badge */}
-      <div className="flex justify-end mb-3">
-        {isComingSoon ? (
-          <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-400 border border-slate-200">
-            Coming Soon
-          </span>
-        ) : (
-          <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-brand-soft text-brand-blue border border-blue-200">
-            {agent.accuracy}% acc.
-          </span>
-        )}
-      </div>
+      {(isComingSoon || agent.accuracy !== undefined) && (
+        <div className="flex justify-end mb-3">
+          {isComingSoon ? (
+            <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-400 border border-slate-200">
+              Coming Soon
+            </span>
+          ) : (
+            <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-brand-soft text-brand-blue border border-blue-200">
+              {agent.accuracy}% acc.
+            </span>
+          )}
+        </div>
+      )}
 
       {/* Title + description */}
       <div className="flex-1">

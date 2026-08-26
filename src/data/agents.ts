@@ -40,7 +40,7 @@ export interface AgentData {
   title: string;
   description: string;
   categories: AgentCategory[];
-  accuracy: number;
+  accuracy?: number;
   accessLink: string | null;
   videoUrl: string | null;
   integrations: IntegrationBadge[];
@@ -204,6 +204,111 @@ export const agents: AgentData[] = [
     subAgents: [],
   },
   {
+    id: "legacy-tech-modernization",
+    title: "Legacy Tech Modernization",
+    description:
+      "Assess legacy systems across the estate and generate a prioritised modernisation roadmap — replatform, refactor, or retire — with effort and risk scored for each path.",
+    categories: ["IT", "Operations"],
+    accessLink: null,
+    videoUrl: null,
+    integrations: [],
+    scope: {
+      level: 3,
+      type: "Process",
+      summary: "Business process orchestration",
+      detail: "Scans infrastructure, application, and platform inventories to score modernisation urgency and sequence a phased roadmap.",
+    },
+    autonomy: {
+      level: 2,
+      type: "Guided",
+      summary: "User-approved execution",
+      detail: "Produces modernisation roadmaps and effort estimates; architecture and platform teams review before work is scheduled.",
+    },
+    capabilities: [
+      "Automated legacy system discovery and inventory scoring",
+      "Modernisation roadmap sequencing (replatform, refactor, retire)",
+      "Technical debt and risk quantification",
+      "Effort and cost estimation per modernisation path",
+      "Dependency mapping across legacy and target-state systems",
+    ],
+    worksWithModels: ["claude-sonnet-4-6"],
+    subAgents: [
+      { name: "Inventory Scanner", description: "Discovers and catalogues legacy systems, versions, and dependencies across the estate." },
+      { name: "Modernisation Sequencer", description: "Scores and sequences systems into a phased replatform/refactor/retire roadmap." },
+      { name: "Risk & Cost Estimator", description: "Quantifies technical debt, risk, and estimated effort for each modernisation path." },
+    ],
+  },
+  {
+    id: "customer-journey-command-center",
+    title: "Customer Journey Command Center",
+    description:
+      "A unified command center for the end-to-end customer journey — mapping every touchpoint, flagging drop-off points, and orchestrating next-best actions across channels.",
+    categories: ["Customer Experience", "Sales"],
+    accessLink: null,
+    videoUrl: null,
+    integrations: [],
+    scope: {
+      level: 3,
+      type: "Process",
+      summary: "Business process orchestration",
+      detail: "Aggregates journey data across digital, voice, and in-person touchpoints into a single orchestrated view of the customer lifecycle.",
+    },
+    autonomy: {
+      level: 2,
+      type: "Guided",
+      summary: "User-approved execution",
+      detail: "Surfaces journey drop-off points and recommended interventions; customer experience teams approve outreach before it's triggered.",
+    },
+    capabilities: [
+      "End-to-end journey mapping across digital, voice, and in-person touchpoints",
+      "Drop-off and friction-point detection at each journey stage",
+      "Next-best-action recommendations tied to journey stage",
+      "Cross-channel handoff tracking with no lost context between teams",
+      "Journey-level reporting for CX and sales leadership",
+    ],
+    worksWithModels: ["claude-sonnet-4-6"],
+    subAgents: [
+      { name: "Journey Mapper", description: "Builds a live map of every touchpoint a customer moves through, across channels." },
+      { name: "Friction Detector", description: "Flags stages where customers stall, disengage, or drop off." },
+      { name: "Next-Best-Action Engine", description: "Recommends the next intervention based on journey stage and signals." },
+    ],
+  },
+  {
+    id: "engineering-observability-command-center",
+    title: "Engineering Observability Command Center",
+    description:
+      "A unified observability command center for engineering teams — correlating logs, metrics, traces, and deployments into one operating picture, with anomalies triaged before they page anyone.",
+    categories: ["IT", "Operations"],
+    accessLink: null,
+    videoUrl: null,
+    integrations: [],
+    scope: {
+      level: 3,
+      type: "Process",
+      summary: "Business process orchestration",
+      detail: "Correlates telemetry across services, deployments, and infrastructure to give engineering teams one operating view instead of siloed dashboards.",
+    },
+    autonomy: {
+      level: 3,
+      type: "Automated",
+      summary: "Fully autonomous execution",
+      detail: "Automatically triages and correlates anomalies across services; escalates to on-call only when confidence thresholds are met.",
+    },
+    capabilities: [
+      "Unified correlation of logs, metrics, traces, and deployment events",
+      "Automated anomaly triage before pages are sent",
+      "Service dependency mapping for faster root-cause analysis",
+      "Deployment-to-incident correlation to catch bad releases fast",
+      "Noise reduction across alerting channels",
+    ],
+    worksWithModels: ["claude-sonnet-4-6"],
+    subAgents: [
+      { name: "Telemetry Correlator", description: "Unifies logs, metrics, and traces into a single incident timeline." },
+      { name: "Anomaly Triage Agent", description: "Automatically classifies and prioritises anomalies before they reach on-call." },
+      { name: "Deployment Watcher", description: "Flags deployments that correlate with new incidents or regressions." },
+    ],
+  },
+  {
     id: "dcf-agent",
     title: "DCF Agent",
     description:
@@ -344,7 +449,7 @@ export const agents: AgentData[] = [
   },
   {
     id: "kpmg-dice",
-    title: "KPMG DICE",
+    title: "DICE Agent",
     description:
       "An AI intelligence layer on Salesforce/Agentforce that listens to every customer touchpoint — calls, chats, site visits, payments — and writes the real pipeline status back into the CRM in real time.",
     categories: ["Sales", "Customer Experience", "Marketing"],

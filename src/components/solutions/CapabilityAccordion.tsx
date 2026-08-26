@@ -3,15 +3,27 @@
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Plus } from "lucide-react";
-import { SolutionCapability } from "@/data/tmtSolutions";
 import { cn } from "@/lib/utils";
 
-interface CapabilityAccordionProps {
-  items: SolutionCapability[];
+/**
+ * Structural type — `SolutionCapability` and `EngineCapability` ({title, detail})
+ * both satisfy it. `bullets` is the alternative body for list-shaped content
+ * (e.g. DSSI service categories); pass one or the other.
+ */
+export interface AccordionItem {
+  title: string;
+  detail?: string;
+  bullets?: string[];
 }
 
-export function CapabilityAccordion({ items }: CapabilityAccordionProps) {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+interface CapabilityAccordionProps {
+  items: AccordionItem[];
+  /** Index open on mount; pass `null` to start fully collapsed. Defaults to the first row. */
+  defaultOpenIndex?: number | null;
+}
+
+export function CapabilityAccordion({ items, defaultOpenIndex = 0 }: CapabilityAccordionProps) {
+  const [openIndex, setOpenIndex] = useState<number | null>(defaultOpenIndex);
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -42,7 +54,24 @@ export function CapabilityAccordion({ items }: CapabilityAccordionProps) {
                   transition={{ duration: prefersReducedMotion ? 0 : 0.25, ease: "easeInOut" }}
                   className="overflow-hidden"
                 >
-                  <p className="pb-5 text-sm text-slate-600 leading-relaxed max-w-2xl">{item.detail}</p>
+                  {item.detail && (
+                    <p className="pb-5 text-sm text-slate-600 leading-relaxed max-w-2xl">
+                      {item.detail}
+                    </p>
+                  )}
+                  {item.bullets && item.bullets.length > 0 && (
+                    <ul className="pb-5 space-y-2 max-w-2xl">
+                      {item.bullets.map((bullet) => (
+                        <li key={bullet} className="flex items-start gap-2.5">
+                          <span
+                            aria-hidden="true"
+                            className="mt-[7px] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-blue"
+                          />
+                          <span className="text-sm text-slate-600 leading-relaxed">{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </motion.div>
               )}
             </AnimatePresence>

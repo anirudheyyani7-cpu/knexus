@@ -12,7 +12,7 @@ export function Header() {
 
         <nav className="flex items-center gap-7">
           <Link
-            href="/solutions"
+            href="/solutions/tech-transformation"
             className="text-sm font-semibold text-slate-600 hover:text-brand-blue transition-colors"
           >
             Solutions

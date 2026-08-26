@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { animate, useInView, useReducedMotion } from "framer-motion";
 import { StaggerItem } from "@/components/solutions/StaggerItem";
+import { cn } from "@/lib/utils";
 
 interface Metric {
   value: string;
@@ -11,7 +12,8 @@ interface Metric {
 
 interface MetricsRowProps {
   metrics: Metric[];
-  source: string;
+  /** Optional footnote rendered under the row (e.g. survey attribution). */
+  source?: string;
 }
 
 interface ParsedMetric {
@@ -81,7 +83,13 @@ export function MetricsRow({ metrics, source }: MetricsRowProps) {
   return (
     <section className="bg-slate-50 border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-6 py-14">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+        {/* Column count follows the item count so the last row never orphans. */}
+        <div
+          className={cn(
+            "grid grid-cols-2 gap-8 sm:gap-10",
+            metrics.length === 5 ? "lg:grid-cols-5" : "lg:grid-cols-4"
+          )}
+        >
           {metrics.map((metric, i) => (
             <StaggerItem key={metric.label} index={i} className="border-t-2 border-brand-blue pt-4">
               <AnimatedMetricValue value={metric.value} />
@@ -90,7 +98,9 @@ export function MetricsRow({ metrics, source }: MetricsRowProps) {
           ))}
         </div>
 
-        <p className="mt-10 text-xs text-slate-400 leading-relaxed max-w-2xl">{source}</p>
+        {source && (
+          <p className="mt-10 text-xs text-slate-400 leading-relaxed max-w-2xl">{source}</p>
+        )}
       </div>
     </section>
   );

@@ -3,9 +3,10 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import { solutions, challenges, priorities } from "@/data/tmtSolutions";
+import { credentials, type Credential } from "@/data/credentials";
 import { cn } from "@/lib/utils";
 
-type ColumnKey = "priorities" | "challenges" | "pillars" | "solutions";
+type ColumnKey = "priorities" | "challenges" | "pillars" | "solutions" | "proof";
 
 interface MapNode {
   id: string;
@@ -20,6 +21,7 @@ const COLUMN_LABELS: Record<ColumnKey, string> = {
   challenges: "Challenges",
   pillars: "Pillars",
   solutions: "Solutions",
+  proof: "Proof points",
 };
 
 const COLUMN_DOTS: Partial<Record<ColumnKey, string>> = {
@@ -61,7 +63,19 @@ function buildNodes(): MapNode[] {
     }))
   );
 
-  return [...priorityNodes, ...challengeNodes, ...pillarNodes, ...solutionNodes];
+  // Only creds carrying pillarIds surface here; `descriptor` is the anonymized
+  // client string, so no real client name ever reaches the map.
+  const proofNodes: MapNode[] = credentials
+    .filter((c): c is Credential & { pillarIds: string[] } => Boolean(c.pillarIds?.length))
+    .map((c) => ({
+      id: `proof:${c.id}`,
+      column: "proof" as const,
+      title: c.descriptor,
+      caption: c.solution,
+      pillarIds: c.pillarIds,
+    }));
+
+  return [...priorityNodes, ...challengeNodes, ...pillarNodes, ...solutionNodes, ...proofNodes];
 }
 
 function sharesPillar(a: MapNode, b: MapNode): boolean {
@@ -208,7 +222,7 @@ export function CapabilityMap() {
       </div>
 
       <div className="overflow-x-auto pb-2">
-        <div ref={containerRef} className="relative flex flex-col lg:flex-row gap-6 lg:min-w-[1180px]">
+        <div ref={containerRef} className="relative flex flex-col lg:flex-row gap-6 lg:min-w-[1376px]">
           <svg
             className="pointer-events-none absolute inset-0 hidden h-full w-full lg:block"
             aria-hidden="true"
@@ -221,7 +235,7 @@ export function CapabilityMap() {
           {columns.map((column) => (
             <div
               key={column.key}
-              className="flex flex-col lg:w-72 lg:flex-shrink-0 rounded-xl border border-slate-200 overflow-hidden lg:h-[600px]"
+              className="flex flex-col lg:w-64 lg:flex-shrink-0 rounded-xl border border-slate-200 overflow-hidden lg:h-[600px]"
             >
               <div className="flex items-baseline justify-between gap-2 bg-brand-navy px-4 py-3 flex-shrink-0">
                 <p className="text-sm font-bold text-white">{COLUMN_LABELS[column.key]}</p>
@@ -284,6 +298,12 @@ export function CapabilityMap() {
           ))}
         </div>
       </div>
+
+      <p className="mt-4 text-xs text-slate-400 leading-relaxed max-w-3xl">
+        Challenge citations reference published KPMG sources, while proof points are
+        representative, anonymized KPMG engagements mapped to a pillar for illustration — not
+        client-specific measurements of any cited figure.
+      </p>
     </div>
   );
 }

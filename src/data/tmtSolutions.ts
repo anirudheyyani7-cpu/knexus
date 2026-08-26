@@ -474,11 +474,21 @@ export const priorities: Priority[] = [
     title: "Unlocking new growth engines",
     pillarIds: ["ai-data-monetization", "cx-transformation"],
   },
+  {
+    id: "from-investment-to-impact",
+    title: "From investment to impact (value realization)",
+    pillarIds: ["value-delivery-office", "ai-data-monetization"],
+  },
+  {
+    id: "resilient-trusted-operations",
+    title: "Building resilient, trusted operations",
+    pillarIds: ["infra-modernization", "value-delivery-office"],
+  },
 ];
 
-// Real, KPMG/PwC-sourced TMT challenges — keep `source` so it can render as a
-// citation. Items sourced "Derived from portfolio" are inferred from our own
-// solution text, not a published stat — keep them labeled as such.
+// KPMG-sourced TMT challenges — keep `source` so it can render as a citation.
+// Items marked "Derived from KPMG portfolio" are inferred from our own solution
+// text, not a published stat — keep them labeled as such.
 export interface Challenge {
   id: string;
   title: string;
@@ -490,49 +500,69 @@ export const challenges: Challenge[] = [
   {
     id: "legacy-infra",
     title: "Legacy infrastructure built for basic connectivity makes change slow and costly",
-    source: "KPMG 2025 Global TMT CEO Outlook",
+    source: "KPMG 2025 Global CEO Outlook (TMT)",
     pillarIds: ["infra-modernization", "business-model-reinvention"],
   },
   {
     id: "process-tech-debt",
     title: "Fragmented product catalogs, duplicate billing platforms and brittle order flows",
-    source: "PwC Telecom Outlook 2025",
+    source: "KPMG — Telco to Techco: Beyond Connectivity",
     pillarIds: ["infra-modernization", "cx-transformation"],
   },
   {
     id: "data-readiness",
     title: "Data readiness — inconsistent, siloed data across systems (59% cite as top challenge)",
-    source: "KPMG 2025 Global TMT CEO Outlook",
+    source: "KPMG 2025 Global CEO Outlook (TMT)",
     pillarIds: ["ai-data-monetization", "infra-modernization"],
   },
   {
     id: "reactive-ops",
     title: "Reactive network operations — high MTTR, limited observability, manual toil",
-    source: "Derived from portfolio (AIOps/SRE)",
+    source: "Derived from KPMG portfolio",
     pillarIds: ["ai-data-monetization"],
   },
   {
     id: "ai-governance",
     title: "AI compliance and legal uncertainty (43% of telecom CEOs) and ethical-AI/governance gaps",
-    source: "KPMG 2025 Global TMT CEO Outlook",
+    source: "KPMG 2025 Global CEO Outlook (TMT)",
     pillarIds: ["ai-data-monetization", "value-delivery-office"],
   },
   {
     id: "talent-gap",
     title: "AI & digital talent skills gap (45% of telecom CEOs especially concerned)",
-    source: "KPMG 2025 Global TMT CEO Outlook",
+    source: "KPMG 2025 Global CEO Outlook (TMT)",
     pillarIds: ["business-model-reinvention", "value-delivery-office"],
   },
   {
     id: "cx-consistency",
     title: "Inconsistent customer experience across fragmented digital and human touchpoints",
-    source: "Derived from portfolio (CX)",
+    source: "Derived from KPMG portfolio",
     pillarIds: ["cx-transformation"],
   },
   {
     id: "value-proof",
     title: "Proving measurable ROI / value realization from AI and transformation spend",
-    source: "KPMG AI Pulse (TMT) + portfolio (VRO)",
+    source: "Derived from KPMG portfolio",
     pillarIds: ["value-delivery-office", "ai-data-monetization"],
+  },
+  {
+    id: "execution-value-gap",
+    title:
+      "Execution gap — turning AI and tech investment into consistent, measurable outcomes at scale",
+    source: "KPMG Global Tech Report 2026 — Technology & Telecommunications",
+    pillarIds: ["value-delivery-office", "ai-data-monetization"],
+  },
+  {
+    id: "third-party-resilience",
+    title:
+      "Third-party and supply-chain risk treated as a resilience issue, not just procurement",
+    source: "KPMG Global Third-Party Risk Management Survey 2026 (TMT)",
+    pillarIds: ["infra-modernization", "value-delivery-office"],
+  },
+  {
+    id: "cyber-trust-at-scale",
+    title: "Maintaining cyber trust while scaling AI across always-on networks",
+    source: "KPMG Cybersecurity Considerations 2025 (TMT)",
+    pillarIds: ["infra-modernization", "ai-data-monetization"],
   },
 ];

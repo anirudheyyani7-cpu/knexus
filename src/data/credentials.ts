@@ -23,6 +23,9 @@ export interface Credential {
   blurb: string;        // anonymized one-line project description
   industry: CredIndustry;
   featured?: boolean;   // show in the primary carousel
+  // TMT pillar(s) this engagement evidences. Only creds with pillarIds set
+  // surface in the Capability Map's proof column; the rest stay carousel-only.
+  pillarIds?: string[];
 }
 
 export const credentials: Credential[] = [
@@ -35,6 +38,7 @@ export const credentials: Credential[] = [
       "End-to-end BSS migration across GSM and non-GSM networks, spanning multiple operating companies.",
     industry: "Telecom",
     featured: true,
+    pillarIds: ["infra-modernization"],
   },
   {
     id: "telco-fip-panafrican",
@@ -59,6 +63,7 @@ export const credentials: Credential[] = [
       "Group-wide API assessment across operating companies, aligned to a unified group API strategy.",
     industry: "Telecom",
     featured: true,
+    pillarIds: ["infra-modernization"],
   },
   {
     id: "telco-datagov-panafrican",
@@ -104,6 +109,7 @@ export const credentials: Credential[] = [
     blurb: "Enterprise-wide data-governance strategy and processes.",
     industry: "Telecom",
     featured: true,
+    pillarIds: ["ai-data-monetization"],
   },
   {
     id: "telco-datamaturity-sea",
@@ -113,6 +119,7 @@ export const credentials: Credential[] = [
       "Data-maturity assessment across 10 operating companies plus a transformation roadmap.",
     industry: "Telecom",
     featured: true,
+    pillarIds: ["ai-data-monetization"],
   },
   {
     id: "telco-cih-global",
@@ -121,6 +128,7 @@ export const credentials: Credential[] = [
     blurb:
       "Customer Intelligence Hub (lakehouse) delivering a 360-degree customer view.",
     industry: "Telecom",
+    pillarIds: ["ai-data-monetization"],
   },
   {
     id: "telco-bt-transformation-kh",
@@ -214,6 +222,7 @@ export const credentials: Credential[] = [
     blurb: "Value proposition for a data-center interconnect offering.",
     industry: "Power & Energy",
     featured: true,
+    pillarIds: ["business-model-reinvention"],
   },
   {
     id: "power-fiber-bu",
@@ -268,6 +277,7 @@ export const credentials: Credential[] = [
     blurb: "Technical due diligence for a platform acquisition.",
     industry: "Media",
     featured: true,
+    pillarIds: ["business-model-reinvention"],
   },
   {
     id: "edu-antipiracy",
@@ -297,6 +307,7 @@ export const credentials: Credential[] = [
     blurb: "Data-platform assessment and recommendations.",
     industry: "Financial Services",
     featured: true,
+    pillarIds: ["ai-data-monetization"],
   },
   {
     id: "compliance-einvoicing-eu",
@@ -336,6 +347,7 @@ export const credentials: Credential[] = [
     blurb: "PMO for audio-visual projects across APAC.",
     industry: "Consumer & Retail",
     featured: true,
+    pillarIds: ["value-delivery-office"],
   },
 
   // ---- Cross-industry / other ----

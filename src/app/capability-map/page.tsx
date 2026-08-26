@@ -29,7 +29,7 @@ export default function CapabilityMapPage() {
               </h1>
               <p className="text-lg text-slate-600 leading-relaxed">
                 Hover any node to see everything it connects to across priorities, challenges,
-                pillars and solutions — click to lock.
+                pillars, solutions and proof points — click to lock.
               </p>
             </div>
           </div>

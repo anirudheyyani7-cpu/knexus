@@ -73,12 +73,11 @@ export function HeroSection() {
           <span className="text-brand-blue">— it elevates.</span>
         </h1>
 
-        <p className="text-slate-500 text-base leading-relaxed mb-8 max-w-2xl mx-auto">
-          KPMG&rsquo;s enterprise AI for TMT playbook platform, bringing together AI solutions,
-          demos, credentials, accelerators, and reusable assets in a single knowledge ecosystem.
-          It is powered by an ontology-driven knowledge graph that connects business capabilities,
-          use cases, data, industry expertise, and AI agents to enable intelligent discovery,
-          recommendations, and solution orchestration.
+        <p className="text-slate-500 text-sm leading-relaxed mb-8 max-w-3xl mx-auto">
+          KPMG&rsquo;s enterprise AI playbook platform for TMT — AI solutions, demos, credentials,
+          accelerators and reusable assets in one knowledge ecosystem, powered by an
+          ontology-driven knowledge graph connecting capabilities, use cases, data, industry
+          expertise and AI agents for intelligent discovery, recommendations and orchestration.
         </p>
 
         <SearchBar />

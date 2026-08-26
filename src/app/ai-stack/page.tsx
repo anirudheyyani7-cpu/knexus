@@ -331,8 +331,19 @@ export default function AIStackPage() {
 
               <p className="mb-8 text-base leading-relaxed text-slate-500">{active.description}</p>
 
-              <div className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-400">
-                Core Components
+              <div className="mb-3 flex items-center justify-between gap-3">
+                <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                  Core Components
+                </div>
+                {active.id === "data" && (
+                  <Link
+                    href="/ai-stack/architecture"
+                    className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-brand-blue/30 bg-brand-blue/[0.06] px-3 py-1.5 text-xs font-semibold text-brand-blue transition-colors hover:border-brand-blue hover:bg-brand-blue hover:text-white"
+                  >
+                    <Network className="h-3.5 w-3.5" />
+                    View Architecture
+                  </Link>
+                )}
               </div>
               <div className="grid gap-3">
                 {active.components.map((comp) => {
